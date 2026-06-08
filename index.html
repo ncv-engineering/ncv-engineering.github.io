@@ -29,158 +29,139 @@
         a { text-decoration: none; color: inherit; transition: var(--transition); }
         img { max-width: 100%; height: auto; display: block; }
 
-        /* ================= NAVBAR ================= */
+        /* ================= 1. NAVBAR ================= */
         .navbar {
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px);
             box-shadow: 0 4px 30px rgba(0,0,0,0.05); padding: 15px 5%;
             display: flex; justify-content: space-between; align-items: center;
+            transition: var(--transition);
         }
-        .brand-text { display: flex; align-items: center; gap: 10px; }
-        .brand-icon { background: var(--primary); color: var(--secondary); padding: 8px 12px; border-radius: 8px; font-size: 1.5rem; }
-        .brand-name { font-weight: 900; font-size: 1.4rem; color: var(--primary); line-height: 1.1; letter-spacing: 1px;}
-        .brand-name span { color: var(--secondary); display: block; font-size: 0.8rem; letter-spacing: 2px;}
+        /* ดึง new logo.png มาโชว์ที่เมนูด้านบน */
+        .navbar .brand-logo img { height: 60px; object-fit: contain; transition: var(--transition); }
+        .navbar .brand-logo img:hover { transform: scale(1.05); }
         
-        .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { color: var(--primary); font-weight: 600; text-transform: uppercase; font-size: 15px; position: relative; }
-        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 3px; background: var(--secondary); transition: var(--transition); }
+        .nav-links { display: flex; gap: 35px; list-style: none; }
+        .nav-links a { color: var(--primary); font-weight: 600; text-transform: uppercase; font-size: 15px; position: relative; padding-bottom: 5px;}
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--secondary); transition: var(--transition); border-radius: 2px;}
         .nav-links a:hover::after { width: 100%; }
 
-        /* ================= HERO SECTION (โลโก้ใหญ่) ================= */
+        /* ================= 2. HERO SECTION (โลโก้ใหม่ ลอยและเรืองแสง) ================= */
         .hero {
             height: 100vh;
-            background: linear-gradient(to right, rgba(12, 31, 56, 0.95), rgba(12, 31, 56, 0.8)), url('https://images.unsplash.com/photo-1541888088322-264906f794db?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+            background: linear-gradient(to right, rgba(12, 31, 56, 0.95), rgba(12, 31, 56, 0.7)), url('https://images.unsplash.com/photo-1541888088322-264906f794db?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
             display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 0 5%; position: relative;
         }
         
-        /* กรอบโลโก้สี่เหลี่ยมขนาดใหญ่ กลมกลืนกับพื้นหลัง */
-        .hero-logo-box {
-            width: 100%;
-            max-width: 500px; /* ขยายขนาดใหญ่ตามที่ต้องการ */
-            background: rgba(255, 255, 255, 0.05); /* เอฟเฟกต์กระจกโปร่งแสง */
-            backdrop-filter: blur(15px);
-            padding: 20px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            margin-top: 80px;
-            margin-bottom: 30px;
-            transition: transform 0.5s ease;
-        }
-        .hero-logo-box:hover { transform: scale(1.02); }
+        /* เทคนิคขั้นสูง: ทำให้โลโก้ลอยและมีแสงออร่า */
+        .hero-logo-box { margin-top: 80px; margin-bottom: 30px; animation: floatLogo 4s ease-in-out infinite; }
         .hero-logo-box img {
+            max-width: 450px;
             width: 100%;
-            border-radius: 10px; /* ทำให้มุมรูปโลโก้มนเข้ากับกรอบ */
+            /* สร้างแสงออร่ารอบไฟล์ PNG */
+            filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 60px rgba(201, 160, 80, 0.3));
+        }
+        @keyframes floatLogo {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
         }
 
-        .hero h1 { font-size: 2.5rem; color: var(--white); margin-bottom: 20px; letter-spacing: 1px; font-weight: 400;}
-        .hero h1 strong { color: var(--secondary); font-weight: 900; font-size: 3rem;}
-        
-        /* ================= ANIMATED COUNTER SECTION ================= */
-        .stats-section {
-            background: var(--secondary);
-            padding: 40px 5%;
-            display: flex;
-            justify-content: center;
-            gap: 80px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 10;
-            margin-top: -50px;
-            border-radius: 15px;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        .stat-item { text-align: center; color: var(--primary); }
-        .stat-item .counter { font-size: 3.5rem; font-weight: 900; font-family: 'Montserrat'; line-height: 1; }
-        .stat-item p { font-weight: 700; font-size: 1.1rem; text-transform: uppercase; }
+        .hero h1 { font-size: 2.8rem; color: var(--white); margin-bottom: 20px; font-weight: 800; letter-spacing: 1px;}
+        .hero p { color: var(--white); font-size: 1.2rem; max-width: 700px; opacity: 0.9; margin-bottom: 40px;}
 
-        /* ================= SECTIONS ================= */
+        /* ================= 3. SECTIONS & ABOUT ================= */
         .section { padding: 100px 5%; }
         .bg-light { background-color: var(--bg-light); }
         .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 2.8rem; color: var(--primary); text-transform: uppercase; }
+        .section-title h2 { font-size: 2.8rem; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
         .divider { height: 4px; width: 80px; background: var(--secondary); margin: 15px auto; border-radius: 2px; }
 
-        /* ================= ABOUT ================= */
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center;}
         .about-content h3 { font-size: 2rem; color: var(--primary); margin-bottom: 20px; }
-        .about-content p { color: var(--text-light); margin-bottom: 15px; font-size: 1.1rem; }
-        .about-image img { border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); transition: var(--transition); }
-        .about-image:hover img { transform: translateY(-10px); }
+        .about-content p { color: var(--text-light); margin-bottom: 15px; font-size: 1.1rem; text-align: justify; }
+        .about-image { position: relative; }
+        .about-image img { border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); z-index: 2; position: relative; }
+        .about-image::after { content: ''; position: absolute; top: -20px; left: 20px; width: 100%; height: 100%; border: 4px solid var(--secondary); border-radius: 15px; z-index: 1; }
 
-        /* ================= SERVICES (3D Hover Cards) ================= */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .service-card {
-            background: var(--white); padding: 50px 30px; border-radius: 15px; text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #f1f5f9;
-            transition: all 0.5s ease; position: relative; overflow: hidden;
+        /* ================= 4. PORTFOLIO (คลิกได้ + ดีไซน์ใหม่) ================= */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .portfolio-item { 
+            position: relative; border-radius: 15px; overflow: hidden; height: 320px; 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1); cursor: pointer; background: var(--primary);
         }
-        /* ลูกเล่นสีพื้นหลังเลื่อนขึ้นมาตอน Hover */
-        .service-card::before {
-            content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 0;
-            background: var(--primary); transition: all 0.5s ease; z-index: 0;
-        }
-        .service-card:hover { transform: translateY(-15px); border-color: transparent; }
-        .service-card:hover::before { height: 100%; }
-        .service-card * { position: relative; z-index: 1; transition: all 0.5s ease; }
-        .service-card:hover h3, .service-card:hover p { color: var(--white); }
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; opacity: 0.9;}
         
-        .service-icon { font-size: 3rem; color: var(--secondary); margin-bottom: 20px; }
+        .portfolio-overlay { 
+            position: absolute; inset: 0; 
+            background: linear-gradient(to top, rgba(12,31,56,0.95) 0%, rgba(12,31,56,0.4) 50%, rgba(12,31,56,0.1) 100%); 
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; 
+            transition: var(--transition);
+        }
+        .portfolio-item:hover img { transform: scale(1.1); opacity: 0.5;}
+        
+        /* ไอคอนแว่นขยายโผล่มาตรงกลางเวลาเอาเมาส์ชี้ */
+        .zoom-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); color: var(--secondary); font-size: 3rem; opacity: 0; transition: var(--transition); }
+        .portfolio-item:hover .zoom-icon { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 
-        /* ================= PORTFOLIO ================= */
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .portfolio-item { position: relative; border-radius: 15px; overflow: hidden; height: 300px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-        .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,31,56,0.95), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; opacity: 0; transition: var(--transition); }
-        .portfolio-item:hover img { transform: scale(1.1); }
-        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
         .portfolio-overlay h3 { color: var(--secondary); font-size: 1.5rem; margin-bottom: 5px; transform: translateY(20px); transition: var(--transition); }
         .portfolio-overlay p { color: var(--white); transform: translateY(20px); transition: var(--transition); transition-delay: 0.1s; }
         .portfolio-item:hover .portfolio-overlay h3, .portfolio-item:hover .portfolio-overlay p { transform: translateY(0); }
 
-        /* ================= CLIENTS (Infinite Scrolling Marquee) ================= */
-        .clients-section { padding: 60px 0; background: var(--white); border-top: 1px solid #eee; overflow: hidden; }
-        .clients-title { text-align: center; color: var(--text-light); font-weight: 700; letter-spacing: 2px; margin-bottom: 40px; }
-        .marquee-container { width: 100%; overflow: hidden; white-space: nowrap; position: relative; }
-        .marquee-content { display: inline-block; animation: marquee 20s linear infinite; }
-        .marquee-content img { height: 60px; display: inline-block; margin: 0 40px; filter: grayscale(100%); opacity: 0.6; transition: var(--transition); }
-        .marquee-content img:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.1); }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        /* LIGHTBOX MODAL (ระบบขยายรูปภาพ) */
+        .modal { display: none; position: fixed; z-index: 2000; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(12, 31, 56, 0.95); backdrop-filter: blur(8px); }
+        .modal-content { margin: auto; display: block; max-width: 90%; max-height: 80vh; border-radius: 10px; box-shadow: 0 0 50px rgba(0,0,0,0.5); animation: zoomIn 0.4s ease; object-fit: contain;}
+        #caption { margin: auto; display: block; width: 80%; max-width: 700px; text-align: center; color: var(--secondary); padding: 20px 0; font-size: 1.5rem; font-weight: 700; letter-spacing: 1px;}
+        .close-modal { position: absolute; top: 30px; right: 40px; color: var(--white); font-size: 50px; font-weight: bold; transition: 0.3s; cursor: pointer; }
+        .close-modal:hover { color: var(--secondary); transform: scale(1.1); }
+        @keyframes zoomIn { from {transform:scale(0.8); opacity:0;} to {transform:scale(1); opacity:1;} }
 
-        /* ================= CAREERS FORM ================= */
+        /* ================= 5. CAREERS FORM (เข้ารหัส ส่งอีเมลตรง) ================= */
         .careers-container { background: var(--white); max-width: 800px; margin: 0 auto; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); padding: 50px; }
         .form-group { margin-bottom: 25px; }
         .form-group label { display: block; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
         .form-control { width: 100%; padding: 15px; border: 2px solid #e2e8f0; border-radius: 10px; font-family: 'Prompt'; transition: var(--transition); background: var(--bg-light); }
         .form-control:focus { border-color: var(--secondary); outline: none; background: var(--white); box-shadow: 0 0 0 4px rgba(201,160,80,0.1); }
+        .form-control[type="file"] { background: var(--white); border: 2px dashed #cbd5e1; padding: 20px; cursor: pointer; text-align: center;}
+        
         .btn-submit { background: var(--primary); color: var(--white); width: 100%; padding: 18px; border: none; border-radius: 10px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: var(--transition); margin-top: 10px;}
         .btn-submit:hover { background: var(--secondary); color: var(--primary); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(201,160,80,0.3); }
 
-        /* ================= FLOATING CONTACT BUTTON ================= */
-        .floating-btn {
-            position: fixed; bottom: 30px; right: 30px; background: var(--secondary); color: var(--primary);
-            width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            font-size: 24px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 9999; cursor: pointer;
-            transition: var(--transition); animation: bounce 2s infinite ease-in-out;
+        /* ================= 6. FLOATING ACTION BUTTONS (ปุ่ม Line & โทร) ================= */
+        .fab-container { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+        .fab-btn { 
+            width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; 
+            font-size: 28px; color: var(--white); box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+            transition: var(--transition); position: relative;
         }
-        .floating-btn:hover { background: var(--primary); color: var(--white); animation: none; transform: scale(1.1); }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        /* ปุ่ม LINE */
+        .fab-line { background: #00B900; }
+        /* ปุ่มโทรศัพท์ */
+        .fab-phone { background: var(--secondary); color: var(--primary); }
+        
+        .fab-btn:hover { transform: scale(1.1) translateY(-5px); }
+        /* เอฟเฟกต์กระเพื่อมให้ปุ่มดูน่ากด */
+        .fab-btn::after {
+            content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%;
+            z-index: -1; animation: ripple 2s infinite;
+        }
+        .fab-line::after { background: #00B900; }
+        .fab-phone::after { background: var(--secondary); }
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
 
         /* ================= FOOTER ================= */
         footer { background: #05101f; color: var(--text-light); text-align: center; padding: 40px 5%; font-size: 0.95rem; }
         
-        /* Reveal Animation */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 1.8rem; }
-            .hero h1 strong { font-size: 2.2rem; }
-            .stats-section { flex-direction: column; gap: 30px; padding: 30px; }
+            .nav-links { display: none; } /* ซ่อนเมนูในมือถือ */
+            .hero-logo-box img { max-width: 300px; }
+            .hero h1 { font-size: 2rem; }
             .about-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -188,14 +169,12 @@
 <body>
 
     <nav class="navbar" id="navbar">
-        <a href="#" class="brand-text">
-            <div class="brand-icon"><i class="fas fa-city"></i></div>
-            <div class="brand-name">N&CV<span>ENGINEERING</span></div>
+        <a href="#" class="brand-logo">
+            <img src="new logo.png" alt="N&CV Engineering Logo" onerror="this.src='logo.jpg'">
         </a>
         <ul class="nav-links">
             <li><a href="#home">หน้าแรก</a></li>
             <li><a href="#about">เกี่ยวกับเรา</a></li>
-            <li><a href="#services">บริการ</a></li>
             <li><a href="#portfolio">ผลงาน</a></li>
             <li><a href="#careers">ร่วมงานกับเรา</a></li>
         </ul>
@@ -203,25 +182,11 @@
 
     <section id="home" class="hero">
         <div class="hero-logo-box reveal">
-            <img src="logo.jpg" alt="N&CV Engineering Logo" onerror="this.style.display='none'">
+            <img src="new logo.png" alt="N&CV Engineering Logo" onerror="this.src='logo.jpg'">
         </div>
-        <h1 class="reveal">ผู้เชี่ยวชาญด้านงานก่อสร้างและวิศวกรรม<br><strong>ระดับแนวหน้าของประเทศ</strong></h1>
+        <h1 class="reveal">ผู้เชี่ยวชาญด้านงานก่อสร้างและวิศวกรรม<br>ระดับแนวหน้าของประเทศ</h1>
+        <p class="reveal">มุ่งเน้นคุณภาพ ระยะเวลา และงบประมาณที่สมดุล เพื่อมอบมาตรฐานงานวิศวกรรม ระบบไฟฟ้า และการรับเหมาก่อสร้างที่ดีที่สุด</p>
     </section>
-
-    <div class="stats-section reveal">
-        <div class="stat-item">
-            <div class="counter" data-target="2554">0</div>
-            <p>ปีที่ก่อตั้ง</p>
-        </div>
-        <div class="stat-item">
-            <div class="counter" data-target="15">0</div>
-            <p>ปีแห่งประสบการณ์</p>
-        </div>
-        <div class="stat-item">
-            <div class="counter" data-target="100">0</div>
-            <p>เปอร์เซ็นต์ส่งมอบงานตรงเวลา</p>
-        </div>
-    </div>
 
     <section id="about" class="section bg-light">
         <div class="section-title reveal">
@@ -234,134 +199,117 @@
             </div>
             <div class="about-content reveal">
                 <h3>รากฐานที่มั่นคง บริการที่ใส่ใจ</h3>
-                <p>บริษัท เอ็น แอนด์ ซีวี-เอ็นจิเนียริ่ง จำกัด ก่อตั้งด้วยทุนจดทะเบียน 5 ล้านบาท โดยมีพนักงานและทีมช่างเทคนิคกว่า 20 ชีวิตที่พร้อมทุ่มเทเพื่อความสำเร็จของโครงการ</p>
-                <p>เราให้บริการตั้งแต่การออกแบบ ก่อสร้างโรงงาน อาคารสำนักงาน ไปจนถึงงานวางระบบไฟฟ้าอุตสาหกรรม โดยยึดหลักการบริหารงานตามมาตรฐาน ISO ควบคู่ไปกับความปลอดภัยขั้นสูงสุดที่มี จป.วิชาชีพ คอยควบคุมงานทุกขั้นตอน</p>
+                <p>บริษัท เอ็น แอนด์ ซีวี-เอ็นจิเนียริ่ง จำกัด จัดตั้งขึ้นในปี พ.ศ.2554 ด้วยทุนจดทะเบียน 5 ล้านบาท โดยมีพนักงานและทีมช่างเทคนิคกว่า 20 ชีวิตที่พร้อมทุ่มเทเพื่อความสำเร็จของโครงการ</p>
+                <p>เราให้บริการตั้งแต่การออกแบบ ก่อสร้างโรงงาน คลังสินค้า อาคารสำนักงาน ไปจนถึงงานวางระบบไฟฟ้าอุตสาหกรรม โดยยึดหลักการบริหารงานตามมาตรฐาน ISO ควบคู่ไปกับความปลอดภัยขั้นสูงสุดที่มี จป.วิชาชีพ คอยควบคุมงานทุกขั้นตอน</p>
             </div>
         </div>
     </section>
 
-    <section id="services" class="section">
-        <div class="section-title reveal">
-            <h2>บริการของเรา</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="services-grid">
-            <div class="service-card reveal">
-                <i class="fas fa-building service-icon"></i>
-                <h3>รับเหมาก่อสร้างครบวงจร</h3>
-                <p>ก่อสร้างโรงงาน คลังสินค้า อาคารสำนักงาน ด้วยมาตรฐานความปลอดภัยสูงสุด</p>
-            </div>
-            <div class="service-card reveal">
-                <i class="fas fa-bolt service-icon"></i>
-                <h3>งานระบบไฟฟ้าโรงงาน</h3>
-                <p>ออกแบบ จัดทำ และติดตั้งตู้ MDB และระบบแสงสว่าง พร้อมรับประกัน 1 ปี</p>
-            </div>
-            <div class="service-card reveal">
-                <i class="fas fa-tools service-icon"></i>
-                <h3>รีโนเวทและซ่อมบำรุง</h3>
-                <p>งานเทพื้น Epoxy ทาสี และซ่อมบำรุงในโรงงานอุตสาหกรรมครบวงจร</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio" class="section bg-light">
+    <section id="portfolio" class="section">
         <div class="section-title reveal">
             <h2>ตัวอย่างผลงาน</h2>
             <div class="divider"></div>
+            <p style="color: var(--text-light);">คลิกที่รูปภาพเพื่อขยายดูรายละเอียด</p>
         </div>
         <div class="portfolio-grid">
-            <div class="portfolio-item reveal">
-                <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Warehouse">
+            <div class="portfolio-item reveal" onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="โครงการก่อสร้างคลังกระจายสินค้า CP ALL / WHA Logistics">
+                <i class="fas fa-search-plus zoom-icon"></i>
                 <div class="portfolio-overlay">
                     <h3>คลังกระจายสินค้า</h3>
                     <p>CP ALL / WHA Logistics</p>
                 </div>
             </div>
-            <div class="portfolio-item reveal">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Office">
+            
+            <div class="portfolio-item reveal" onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="งานปรับปรุงสำนักงาน ตึก CP Tower สีลม / SJ INFINITE">
+                <i class="fas fa-search-plus zoom-icon"></i>
                 <div class="portfolio-overlay">
                     <h3>ปรับปรุงสำนักงาน</h3>
                     <p>ตึก CP Tower / SJ INFINITE</p>
                 </div>
             </div>
-            <div class="portfolio-item reveal">
-                <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Electrical">
+            
+            <div class="portfolio-item reveal" onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="งานติดตั้งตู้ควบคุมไฟฟ้า (MDB) โรงงาน KCE / SHISEIDO">
+                <i class="fas fa-search-plus zoom-icon"></i>
                 <div class="portfolio-overlay">
-                    <h3>งานระบบไฟฟ้า</h3>
-                    <p>ตู้ควบคุมไฟฟ้า โรงงาน KCE</p>
+                    <h3>งานระบบไฟฟ้าโรงงาน</h3>
+                    <p>ตู้ควบคุมไฟฟ้า / โรงงาน KCE</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item reveal" onclick="openLightbox(this)">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="งานปรับปรุงและก่อสร้างโรงงาน">
+                <i class="fas fa-search-plus zoom-icon"></i>
+                <div class="portfolio-overlay">
+                    <h3>งานก่อสร้างโรงงาน</h3>
+                    <p>อาคาร Outlet / โรงงานเบทาโกร</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="clients-section">
-        <div class="clients-title reveal">ความไว้วางใจจากลูกค้าระดับองค์กร (OUR TRUSTED CLIENTS)</div>
-        <div class="marquee-container reveal">
-            <div class="marquee-content">
-                <img src="CP_ALL_Logo.png" alt="CP ALL" onerror="this.style.display='none'">
-                <img src="logo wha.png" alt="WHA" onerror="this.style.display='none'">
-                <img src="KCE.png" alt="KCE" onerror="this.style.display='none'">
-                <img src="Shiseido Logo.jpg" alt="Shiseido" onerror="this.style.display='none'">
-                <img src="honda.jpg" alt="Honda" onerror="this.style.display='none'">
-                <img src="DKSH.png" alt="DKSH" onerror="this.style.display='none'">
-                <img src="lf.jpg" alt="LF Logistics" onerror="this.style.display='none'">
-                
-                <img src="CP_ALL_Logo.png" alt="CP ALL" onerror="this.style.display='none'">
-                <img src="logo wha.png" alt="WHA" onerror="this.style.display='none'">
-                <img src="KCE.png" alt="KCE" onerror="this.style.display='none'">
-                <img src="Shiseido Logo.jpg" alt="Shiseido" onerror="this.style.display='none'">
-                <img src="honda.jpg" alt="Honda" onerror="this.style.display='none'">
-                <img src="DKSH.png" alt="DKSH" onerror="this.style.display='none'">
-                <img src="lf.jpg" alt="LF Logistics" onerror="this.style.display='none'">
-            </div>
-        </div>
-    </section>
+    <div id="lightboxModal" class="modal">
+        <span class="close-modal" onclick="closeLightbox()">&times;</span>
+        <img class="modal-content" id="lightboxImg">
+        <div id="caption"></div>
+    </div>
 
     <section id="careers" class="section bg-light">
         <div class="section-title reveal">
             <h2>ร่วมงานกับเรา</h2>
             <div class="divider"></div>
-            <p>กรอกข้อมูลและแนบไฟล์ประวัติส่วนตัวของคุณด้านล่าง</p>
+            <p style="color: var(--text-light);">กรอกข้อมูลเพื่อส่งใบสมัครตรงถึง HR</p>
         </div>
         <div class="careers-container reveal">
-            <form action="mailto:suwisit.ncv@gmail.com" method="POST" enctype="text/plain">
+            <form action="https://formsubmit.co/suwisit.ncv@gmail.com" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="_subject" value="ใบสมัครงานใหม่จากหน้าเว็บไซต์ N&CV!">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                
                 <div class="form-group">
                     <label>ชื่อ - นามสกุล *</label>
-                    <input type="text" class="form-control" name="Name" required placeholder="นาย สมชาย ใจดี">
+                    <input type="text" class="form-control" name="ชื่อ-นามสกุล" required placeholder="นาย สมชาย ใจดี">
                 </div>
                 <div class="form-group">
                     <label>เบอร์โทรศัพท์ติดต่อ *</label>
-                    <input type="tel" class="form-control" name="Phone" required placeholder="08X-XXX-XXXX">
+                    <input type="tel" class="form-control" name="เบอร์โทรศัพท์" required placeholder="089-XXX-XXXX">
                 </div>
                 <div class="form-group">
                     <label>ตำแหน่งที่สนใจ *</label>
-                    <select class="form-control" name="Position" required>
+                    <select class="form-control" name="ตำแหน่ง" required>
                         <option value="วิศวกรควบคุมงาน">วิศวกรควบคุมงาน (Site Engineer)</option>
                         <option value="สถาปนิก">สถาปนิก (Architect)</option>
                         <option value="โฟร์แมน">โฟร์แมน (Foreman)</option>
-                        <option value="ช่างเทคนิค">ช่างเทคนิค / ช่างไฟฟ้า</option>
-                        <option value="จป.">เจ้าหน้าที่ความปลอดภัย (จป.)</option>
+                        <option value="ช่างเทคนิค/ไฟฟ้า">ช่างเทคนิค / ช่างไฟฟ้า</option>
+                        <option value="เจ้าหน้าที่ความปลอดภัย (จป.)">เจ้าหน้าที่ความปลอดภัย (จป.)</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>รายละเอียดแนะนำตัวเพิ่มเติม (สามารถแนบลิงก์ Portfolio ได้)</label>
-                    <textarea class="form-control" name="Details" rows="4" placeholder="พิมพ์แนะนำตัว หรือวางลิงก์ Google Drive ของ Resume ที่นี่..."></textarea>
+                    <label>แนบไฟล์ Resume / Portfolio (PDF หรือรูปภาพ)</label>
+                    <input type="file" class="form-control" name="ไฟล์แนบ" accept=".pdf,.png,.jpg,.jpeg">
                 </div>
-                <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> ส่งอีเมลสมัครงาน</button>
+                <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> ยื่นใบสมัครงาน</button>
             </form>
         </div>
     </section>
 
-    <a href="tel:0890231676" class="floating-btn" title="โทรหาเรา">
-        <i class="fas fa-phone-alt"></i>
-    </a>
+    <div class="fab-container">
+        <a href="https://line.me/ti/p/NKvT3lnW9f" target="_blank" class="fab-btn fab-line" title="ติดต่อผ่าน LINE">
+            <i class="fab fa-line"></i>
+        </a>
+        <a href="tel:0890231676" class="fab-btn fab-phone" title="โทรหาเรา">
+            <i class="fas fa-phone-alt"></i>
+        </a>
+    </div>
 
     <footer>
         <p>© 2026 N & CV-ENGINEERING CO.,LTD. All rights reserved. | 69/113 ถ.หทัยราษฎร์ แขวงมีนบุรี เขตมีนบุรี กทม.</p>
     </footer>
 
     <script>
-        // 1. Reveal Animation (เลื่อนจอแล้วโผล่)
+        // 1. Reveal Animation
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -370,40 +318,30 @@
                 if (elementTop < windowHeight - 50) { reveals[i].classList.add("active"); }
             }
         }
-        window.addEventListener("scroll", reveal); 
-        reveal();
+        window.addEventListener("scroll", reveal); reveal();
 
-        // 2. Animated Counters (ตัวเลขวิ่ง)
-        const counters = document.querySelectorAll('.counter');
-        let hasRun = false;
-        
-        function runCounters() {
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const updateCount = () => {
-                    const count = +counter.innerText;
-                    const speed = target / 50; // ความเร็วในการวิ่ง
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + speed);
-                        setTimeout(updateCount, 20);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                updateCount();
-            });
+        // 2. Lightbox (ระบบขยายรูปภาพผลงาน)
+        var modal = document.getElementById("lightboxModal");
+        var modalImg = document.getElementById("lightboxImg");
+        var captionText = document.getElementById("caption");
+
+        function openLightbox(element) {
+            var img = element.querySelector("img");
+            modal.style.display = "block";
+            modalImg.src = img.src;
+            captionText.innerHTML = img.alt; // ดึงข้อความจาก alt มาแสดงเป็นคำอธิบาย
+            document.body.style.overflow = "hidden"; // ล็อคหน้าจอไม่ให้เลื่อนตอนดูรูป
         }
 
-        window.addEventListener('scroll', () => {
-            const statsSection = document.querySelector('.stats-section');
-            if(!statsSection) return;
-            const sectionPos = statsSection.getBoundingClientRect().top;
-            const screenPos = window.innerHeight;
-            if(sectionPos < screenPos && !hasRun) {
-                runCounters();
-                hasRun = true;
-            }
-        });
+        function closeLightbox() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+        
+        // คลิกรอบๆ รูปเพื่อปิดได้
+        modal.onclick = function(event) {
+            if (event.target == modal) { closeLightbox(); }
+        }
     </script>
 </body>
 </html>
