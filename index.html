@@ -3,46 +3,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N & CV-ENGINEERING CO.,LTD</title>
+    <title>N & CV-ENGINEERING CO.,LTD | บริษัทรับเหมาก่อสร้างและวิศวกรรม</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; color: #333; }
-        header { background-color: #003366; color: white; padding: 1.5rem; text-align: center; }
-        nav { background-color: #f4f4f4; padding: 10px; text-align: center; }
-        nav a { margin: 0 15px; text-decoration: none; color: #003366; font-weight: bold; }
-        section { padding: 40px 20px; max-width: 800px; margin: auto; text-align: center; }
-        footer { background-color: #222; color: white; text-align: center; padding: 10px; position: fixed; bottom: 0; width: 100%; }
+        /* ================= CSS VARIABLES (ตั้งค่าสีหลัก) ================= */
+        :root {
+            --primary-color: #0A2540; /* น้ำเงินกรมท่าเข้ม */
+            --secondary-color: #D4AF37; /* สีทอง/เหลือง */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #F8FAFC;
+            --white: #FFFFFF;
+        }
+
+        /* ================= RESET & BASIC ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Prompt', sans-serif; color: var(--text-dark); line-height: 1.6; background-color: var(--bg-light); overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', 'Prompt', sans-serif; font-weight: 700; }
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* ================= NAVBAR (เมนูด้านบน) ================= */
+        .navbar {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px); /* ทำพื้นหลังเบลอสวยๆ */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .logo-container img { height: 60px; /* ขนาดโลโก้ */ }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: var(--primary-color); font-weight: 500; font-size: 16px; position: relative; }
+        /* ขีดเส้นใต้ตอนเอาเมาส์ชี้ */
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -5px; left: 0; background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .mobile-menu-btn { display: none; font-size: 24px; color: var(--primary-color); cursor: pointer; }
+
+        /* ================= HERO SECTION (ส่วนแรกสุด รูปภาพใหญ่) ================= */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 37, 64, 0.8), rgba(10, 37, 64, 0.8)), 
+                        url('https://images.unsplash.com/photo-1541888088322-264906f794db?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: var(--white); padding: 0 20px; margin-top: 60px;
+        }
+        .hero h1 { font-size: 4rem; color: var(--secondary-color); margin-bottom: 20px; letter-spacing: 2px; }
+        .hero h2 { font-size: 2rem; margin-bottom: 20px; font-weight: 500; }
+        .hero p { font-size: 1.2rem; max-width: 800px; margin-bottom: 40px; font-weight: 300; }
+        .btn-primary {
+            background-color: var(--secondary-color); color: var(--primary-color);
+            padding: 15px 40px; border-radius: 5px; font-weight: 700; font-size: 1.1rem;
+            border: 2px solid var(--secondary-color);
+        }
+        .btn-primary:hover { background-color: transparent; color: var(--secondary-color); }
+
+        /* ================= COMMON SECTION PADDING ================= */
+        .section-padding { padding: 80px 5%; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.5rem; color: var(--primary-color); text-transform: uppercase; }
+        .section-title .divider { height: 4px; width: 80px; background-color: var(--secondary-color); margin: 15px auto; border-radius: 2px; }
+        .section-title p { color: var(--text-light); font-size: 1.1rem; }
+
+        /* ================= ABOUT SECTION ================= */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .about-text h3 { font-size: 2rem; color: var(--primary-color); margin-bottom: 20px; }
+        .about-text p { margin-bottom: 20px; color: var(--text-light); text-align: justify; }
+        .about-stats { display: flex; gap: 30px; margin-top: 30px; }
+        .stat-item { text-align: center; background: var(--white); padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); flex: 1; border-bottom: 4px solid var(--secondary-color);}
+        .stat-item h4 { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 5px; }
+        .about-img img { border-radius: 10px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+        /* ================= SERVICES SECTION ================= */
+        .services-section { background-color: var(--white); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .service-card {
+            background-color: var(--bg-light); padding: 40px 30px; border-radius: 10px; text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid #eee;
+        }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-bottom: 4px solid var(--secondary-color); }
+        .service-card i { font-size: 3rem; color: var(--secondary-color); margin-bottom: 20px; }
+        .service-card h3 { color: var(--primary-color); margin-bottom: 15px; font-size: 1.3rem; }
+
+        /* ================= PORTFOLIO SECTION ================= */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .portfolio-item { position: relative; overflow: hidden; border-radius: 10px; height: 250px; }
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .portfolio-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 37, 64, 0.8); color: var(--white);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s ease; text-align: center; padding: 20px;
+        }
+        .portfolio-item:hover img { transform: scale(1.1); }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+        .portfolio-overlay h3 { color: var(--secondary-color); margin-bottom: 10px; }
+
+        /* ================= CLIENTS SECTION ================= */
+        .clients-section { background-color: var(--white); }
+        .clients-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; align-items: center; max-width: 1000px; margin: 0 auto; opacity: 0.6; }
+        .clients-grid span { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* ================= CONTACT SECTION ================= */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; max-width: 1200px; margin: 0 auto; background: var(--white); padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .contact-info { display: flex; flex-direction: column; gap: 30px; }
+        .info-item { display: flex; align-items: flex-start; gap: 20px; }
+        .info-item i { font-size: 24px; color: var(--secondary-color); background: var(--bg-light); padding: 15px; border-radius: 50%; }
+        .info-item h4 { color: var(--primary-color); margin-bottom: 5px; }
+        .map-container iframe { width: 100%; height: 100%; min-height: 300px; border: none; border-radius: 10px; }
+
+        /* ================= FOOTER ================= */
+        footer { background-color: var(--primary-color); color: var(--white); text-align: center; padding: 30px 20px; border-top: 5px solid var(--secondary-color); }
+
+        /* ================= ANIMATION CLASS ================= */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ================= MOBILE RESPONSIVE ================= */
+        @media (max-width: 900px) {
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero h2 { font-size: 1.5rem; }
+            .nav-links {
+                position: absolute; top: 100%; left: -100%; width: 100%; background: var(--white);
+                flex-direction: column; text-align: center; padding: 20px 0; box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                transition: left 0.3s ease;
+            }
+            .nav-links.active { left: 0; }
+            .mobile-menu-btn { display: block; }
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>N & CV-ENGINEERING CO.,LTD</h1>
-    <p>ผู้เชี่ยวชาญด้านวิศวกรรมและรับเหมาก่อสร้าง</p>
-</header>
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="#"><img src="logo.jpg" alt="N & CV-ENGINEERING Logo" onerror="this.outerHTML='<h2 style=\'color: var(--primary-color);\'>N & CV <span style=\'color: var(--secondary-color);\'>ENGINEERING</span></h2>'"></a>
+        </div>
+        <div class="mobile-menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" onclick="toggleMenu()">หน้าแรก</a></li>
+            <li><a href="#about" onclick="toggleMenu()">เกี่ยวกับเรา</a></li>
+            <li><a href="#services" onclick="toggleMenu()">บริการ</a></li>
+            <li><a href="#portfolio" onclick="toggleMenu()">ผลงาน</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">ติดต่อเรา</a></li>
+        </ul>
+    </nav>
 
-<nav>
-    <a href="#about">เกี่ยวกับเรา</a>
-    <a href="#services">บริการ</a>
-    <a href="#contact">ติดต่อเรา</a>
-</nav>
+    <section id="home" class="hero">
+        <h2 class="reveal">บริษัท เอ็น แอนด์ ซีวี-เอ็นจิเนียริ่ง จำกัด</h2>
+        <h1 class="reveal">N & CV ENGINEERING</h1>
+        <p class="reveal">มุ่งเน้นคุณภาพ ระยะเวลา และงบประมาณที่สมดุล เพื่อมอบมาตรฐานงานวิศวกรรมและการรับเหมาก่อสร้างที่ดีที่สุดสำหรับคุณ</p>
+        <a href="#contact" class="btn-primary reveal">ปรึกษาโครงการกับเรา</a>
+    </section>
 
-<section id="about">
-    <h2>เกี่ยวกับบริษัท</h2>
-    <p>ให้บริการด้านงานก่อสร้าง งานโยธา และบริหารโครงการอย่างมืออาชีพ ด้วยมาตรฐานวิศวกรรมที่ถูกต้องและปลอดภัย</p>
-</section>
+    <section id="about" class="section-padding">
+        <div class="section-title reveal">
+            <h2>เกี่ยวกับบริษัท</h2>
+            <div class="divider"></div>
+            <p>รากฐานความมั่นคง ก่อตั้งตั้งแต่ปี พ.ศ. 2554</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-img reveal">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Construction Management">
+            </div>
+            <div class="about-text reveal">
+                <h3>ผู้เชี่ยวชาญด้านงานก่อสร้างและวิศวกรรม</h3>
+                <p>เราให้บริการงานก่อสร้างหลากหลายประเภท ทั้งงานที่ต้องการความมั่นคงแข็งแรงอย่างโรงงานและคลังสินค้า ไปจนถึงงานก่อสร้างอาคารสำนักงานและโครงการอสังหาริมทรัพย์ที่เน้นความสวยงามทางสถาปัตยกรรม</p>
+                <p>ด้วยความเชี่ยวชาญในการประสานงานระหว่างวิศวกรรมต่างสาขา เราผสมผสานความรู้และประสบการณ์เพื่อให้ลูกค้าได้รับผลงานที่น่าพึงพอใจสูงสุด ภายใต้หลักการตัดสินใจบนพื้นฐานของหลักฐาน (Evidence-based Decision Making)</p>
+                
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h4>12+</h4>
+                        <p>ปีแห่งประสบการณ์</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>5M</h4>
+                        <p>ทุนจดทะเบียน (บาท)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="services">
-    <h2>บริการของเรา</h2>
-    <ul style="list-style-type: none; padding: 0;">
-        <li>✔️ งานเทคอนกรีตและโครงสร้าง</li>
-        <li>✔️ งานวางระบบท่อประปา</li>
-        <li>✔️ บริการประเมินราคาโครงการ</li>
-    </ul>
-</section>
+    <section id="services" class="section-padding services-section">
+        <div class="section-title reveal">
+            <h2>บริการของเรา</h2>
+            <div class="divider"></div>
+            <p>ครอบคลุมทุกมิติของงานวิศวกรรมและการก่อสร้างแบบครบวงจร</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <i class="fas fa-drafting-compass"></i>
+                <h3>บริการออกแบบ</h3>
+                <p>ชำนาญการออกแบบโรงงานมาตรฐาน GMP, HACCP, คลังสินค้าศูนย์กระจายสินค้า ห้องเย็น และอาคารพักอาศัย</p>
+            </div>
+            <div class="service-card reveal">
+                <i class="fas fa-hard-hat"></i>
+                <h3>บริหารและควบคุมงาน (C.M.)</h3>
+                <p>ควบคุมงานก่อสร้างโดยทีมวิศวกร สถาปนิก และช่างเทคนิคที่ผ่านการอบรมด้าน Construction Management โดยเฉพาะ</p>
+            </div>
+            <div class="service-card reveal">
+                <i class="fas fa-building"></i>
+                <h3>รับเหมาก่อสร้างทั่วไป</h3>
+                <p>รับก่อสร้างบ้านและอาคารทุกชนิด ถูกต้องตามมาตรฐานวิศวกรรมและสถาปัตยกรรม พร้อมบริการหลังการขายที่ดีเยี่ยม</p>
+            </div>
+            <div class="service-card reveal">
+                <i class="fas fa-bolt"></i>
+                <h3>ระบบไฟฟ้าและซ่อมบำรุง</h3>
+                <p>ออกแบบ จัดทำ ติดตั้งตู้ควบคุมไฟฟ้า (MDB) ระบบกล้องวงจรปิด และงานซ่อมบำรุงระบบไฟฟ้าในโรงงานอุตสาหกรรม</p>
+            </div>
+        </div>
+    </section>
 
-<footer>
-    <p>&copy; 2026 N & CV-ENGINEERING CO.,LTD. All rights reserved.</p>
-</footer>
+    <section id="portfolio" class="section-padding">
+        <div class="section-title reveal">
+            <h2>ตัวอย่างผลงาน</h2>
+            <div class="divider"></div>
+            <p>ภาพรวมโครงการที่ผ่านมาของเรา (Industrial, Commercial & Residential)</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item reveal">
+                <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Warehouse Project">
+                <div class="portfolio-overlay">
+                    <h3>คลังสินค้า & ศูนย์กระจายสินค้า</h3>
+                    <p>CP ALL, WHA Logistics</p>
+                </div>
+            </div>
+            <div class="portfolio-item reveal">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Office Renovation">
+                <div class="portfolio-overlay">
+                    <h3>งานปรับปรุงอาคารสำนักงาน</h3>
+                    <p>CP Tower สีลม, ศูนย์ฝึกอบรม</p>
+                </div>
+            </div>
+            <div class="portfolio-item reveal">
+                <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Electrical Systems">
+                <div class="portfolio-overlay">
+                    <h3>งานระบบไฟฟ้าโรงงาน</h3>
+                    <p>ตู้ MDB, KCE, Shiseido</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="section-padding clients-section">
+        <div class="section-title reveal">
+            <h2>ลูกค้าที่ไว้วางใจเรา</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="clients-grid reveal">
+            <span>CP ALL</span>
+            <span>WHA LOGISTICS</span>
+            <span>KCE</span>
+            <span>SHISEIDO</span>
+            <span>HONDA</span>
+            <span>DKSH</span>
+            <span>KERRY EXPRESS</span>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding">
+        <div class="section-title reveal">
+            <h2>ติดต่อเรา</h2>
+            <div class="divider"></div>
+            <p>พร้อมให้คำปรึกษาและประเมินราคางานก่อสร้างและระบบวิศวกรรม</p>
+        </div>
+        <div class="contact-grid reveal">
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>สำนักงานใหญ่</h4>
+                        <p>69/113 ถนนหทัยราษฎร์ แขวงมีนบุรี<br>เขตมีนบุรี กรุงเทพฯ 10510</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h4>เบอร์โทรศัพท์</h4>
+                        <p>089-0231676 (คุณวิชิต)<br>085-1283921</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>อีเมล</h4>
+                        <p>vit514@yahoo.com<br>ncv_engineering@yahoo.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-warehouse"></i>
+                    <div>
+                        <h4>Store & Office 2</h4>
+                        <p>อำเภอพนัสนิคม จังหวัดชลบุรี</p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15499.0123456789!2d100.7123456!3d13.8123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQ4JzQ0LjQiTiAxMDDCsDQyJzQ0LjQiRQ!5e0!3m2!1sth!2sth!4v1620000000000!5m2!1sth!2sth" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 N & CV-ENGINEERING CO.,LTD. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // ฟังก์ชันเปิด/ปิด เมนูมือถือ
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // ฟังก์ชัน อนิเมชั่นเวลาเลื่อนหน้าจอ (Scroll Reveal)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // ระยะที่ให้กราฟิกโผล่ขึ้นมา
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        // ตรวจจับการเลื่อนเมาส์
+        window.addEventListener("scroll", reveal);
+        // เรียกใช้ครั้งแรกตอนโหลดหน้าเว็บ
+        reveal();
+    </script>
 </body>
 </html>
