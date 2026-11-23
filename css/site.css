@@ -581,3 +581,108 @@ h2{position:relative}
 @media (max-width:900px){.marquee__group{gap:44px;padding-right:44px}.marquee__group img{height:32px}}
 @media (prefers-reduced-motion:reduce){.marquee__group+.marquee__group{display:none}.marquee__group{flex-wrap:wrap;justify-content:center;padding:0 20px;gap:24px 40px}}
 .mosaic a .slides__dots{left:auto;right:12px;bottom:14px;background:transparent;padding:0}
+
+/* ===== v6: fonts, cards, icons, logo, contact widget ===== */
+@font-face{font-family:"NCV Text";src:url(../assets/fonts/notothai-400.woff) format("woff");font-weight:400;font-display:swap;unicode-range:U+0E00-0E7F,U+200B-200D,U+25CC}
+@font-face{font-family:"NCV Text";src:url(../assets/fonts/notothai-500.woff) format("woff");font-weight:500;font-display:swap;unicode-range:U+0E00-0E7F,U+200B-200D,U+25CC}
+@font-face{font-family:"NCV Text";src:url(../assets/fonts/notothai-600.woff) format("woff");font-weight:600;font-display:swap;unicode-range:U+0E00-0E7F,U+200B-200D,U+25CC}
+@font-face{font-family:"NCV Text";src:url(../assets/fonts/plexlatin-400.woff) format("woff");font-weight:400;font-display:swap;unicode-range:U+0000-00FF,U+2013-2026,U+00D7,U+2212}
+@font-face{font-family:"NCV Text";src:url(../assets/fonts/plexlatin-500.woff) format("woff");font-weight:500;font-display:swap;unicode-range:U+0000-00FF,U+2013-2026,U+00D7,U+2212}
+@font-face{font-family:"NCV Text";src:url(../assets/fonts/plexlatin-600.woff) format("woff");font-weight:600;font-display:swap;unicode-range:U+0000-00FF,U+2013-2026,U+00D7,U+2212}
+@font-face{font-family:"Kanit";src:url(../assets/fonts/kanit-500.woff) format("woff");font-weight:500;font-display:swap}
+@font-face{font-family:"Kanit";src:url(../assets/fonts/kanit-600.woff) format("woff");font-weight:600;font-display:swap}
+:root{--body:"NCV Text",Tahoma,sans-serif;--head:"Kanit","NCV Text",Tahoma,sans-serif;--shadow:0 1px 2px rgba(15,42,68,.06),0 8px 24px rgba(15,42,68,.07)}
+body{font-family:var(--body);line-height:1.8}
+h1,h2,h3{font-family:var(--head);font-weight:600;line-height:1.38;letter-spacing:0}
+h3{font-weight:500}
+.hero4 h1{font-weight:600}
+.stats dd strong,.mosaic__badge strong{font-family:var(--head);font-weight:600}
+.btn{font-family:var(--head);font-weight:500;letter-spacing:.01em}
+.nav a{font-family:var(--head);font-weight:400}
+.d-txt text,.lab text,.lv text,.dm text,.g-bub text{font-family:"NCV Text",sans-serif}
+
+/* icons */
+.ic{width:1.1em;height:1.1em;flex:none;vertical-align:-.18em;margin-right:.45em}
+.tel{display:inline-flex;align-items:center}
+.tel .ic{color:var(--red)}
+.cinfo li>span:first-child{display:inline-flex;align-items:flex-start}
+.cinfo li>span:first-child .ic{color:#ff6b6f;margin-top:.3em}
+.maplink{display:inline-flex;align-items:center}
+.tb__c{display:flex;align-items:center;margin:2px 0}
+.tb__c .ic{color:#ff6b6f}
+
+/* cards: every block of text sits in a frame */
+.card{background:#fff;padding:clamp(22px,3vw,34px);box-shadow:var(--shadow);border-radius:4px}
+.card--bar{border-left:5px solid var(--red)}
+.lead--panel{background:#fff;border:1px solid var(--line);border-left:4px solid var(--red);padding:16px 20px;border-radius:4px;box-shadow:var(--shadow)}
+.about__text.card h2{margin-top:0}
+.svc__card,.facts,.form{border-radius:4px}
+.sys{border-top:0;gap:16px;grid-template-columns:repeat(5,1fr)}
+.sys__col,.sys__col:first-child,.sys__col:last-child{background:#fff;padding:22px 20px 10px;border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow)}
+.sys__col::before,.sys__col:first-child::before{left:-1px;right:-1px;top:-1px;height:5px;border-radius:4px 4px 0 0}
+#systems{background:var(--tint)}
+#systems .sect{background:#fff;padding:20px 24px 4px;border-radius:4px;box-shadow:var(--shadow)}
+.steps{gap:16px;border-top:0}
+.steps li{background:#fff;padding:22px 20px;border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow);border-top:0}
+.steps .gb{position:static;margin-bottom:12px;width:36px;height:36px;font-size:16px;background:var(--red);border-color:var(--red);color:#fff;font-family:var(--head)}
+.steps li{transition:transform .25s,box-shadow .25s}
+.steps li:hover{transform:translateY(-4px);box-shadow:0 16px 30px rgba(15,42,68,.12)}
+.contact__info{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:clamp(22px,3vw,34px);border-radius:4px}
+.careers{background:var(--tint);border-bottom:0}
+.careers__in.card{display:flex}
+.prj__meta{background:#fff;padding:24px;border-radius:4px;box-shadow:var(--shadow);align-self:start}
+.prj{border-top:0;padding:24px 0}
+.page .wrap>.lead{background:#fff;border-left:4px solid var(--red);padding:16px 20px;box-shadow:var(--shadow);border-radius:4px}
+.page{background:var(--tint)}
+.names[open] ul{background:#fff;padding:16px 24px;box-shadow:var(--shadow);border-radius:4px}
+
+/* big brand logo */
+.hero4__logo{display:block;width:clamp(220px,26vw,360px);height:auto;margin:0 0 22px -6px;filter:drop-shadow(0 10px 22px rgba(15,42,68,.18))}
+.brand img{height:50px}
+.tb__logo{background:transparent}
+.tb__logo img{width:150px}
+
+/* nav underline slides in */
+.nav a{border-bottom:0;background:linear-gradient(var(--red),var(--red)) 0 100%/0 2px no-repeat;transition:background-size .25s}
+.nav a:hover{background-size:100% 2px}
+.btn{transition:background-color .15s,color .15s,border-color .15s,transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(15,42,68,.15)}
+.btn--red:hover{box-shadow:0 8px 20px rgba(215,20,26,.35)}
+
+/* floating contact widget */
+.fab{position:fixed;right:20px;bottom:20px;z-index:80;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.fab__btn{display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 22px 0 18px;border:0;border-radius:28px;background:var(--red);color:#fff;font:500 17px var(--head);cursor:pointer;box-shadow:0 10px 26px rgba(215,20,26,.4);position:relative}
+.fab__btn svg{width:24px;height:24px}
+.fab__x{display:none}
+.fab.is-open .fab__open{display:none}.fab.is-open .fab__x{display:block}
+.fab.is-open .fab__btn{background:var(--navy);box-shadow:0 10px 26px rgba(15,42,68,.4)}
+.fab__btn::after{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid var(--red);opacity:0}
+.fab.ping .fab__btn::after{animation:ping 1.6s ease-out 3}
+@keyframes ping{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.35)}}
+.fab__panel{width:min(340px,calc(100vw - 40px));background:#fff;border-radius:10px;box-shadow:0 24px 60px rgba(15,42,68,.28);overflow:hidden;transform-origin:100% 100%;animation:pop .22s cubic-bezier(.2,.8,.2,1)}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+.fab__title{margin:0;background:var(--navy);color:#fff;padding:14px 18px;font:500 16px var(--head);display:flex;align-items:center}
+.fab__title .ic{color:#ff6b6f}
+.fab__item{display:flex;align-items:center;gap:14px;padding:12px 18px;text-decoration:none;color:var(--ink);border-top:1px solid var(--line-2);transition:background .15s}
+.fab__item:hover{background:var(--tint)}
+.fab__item strong{display:block;font-family:var(--head);font-weight:500;font-size:16.5px;line-height:1.4}
+.fab__item small{display:block;color:var(--steel);font-size:14px;line-height:1.4}
+.fab__ic{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;flex:none;background:#e9f9ef}
+.fab__ic svg{width:40px;height:40px}
+.fab__ic--tel{background:#ffeceb;color:var(--red)}.fab__ic--tel svg,.fab__ic--red svg,.fab__ic--navy svg{width:20px;height:20px}
+.fab__ic--red{background:var(--red);color:#fff}
+.fab__ic--navy{background:var(--navy);color:#fff}
+.totop{bottom:88px;right:26px;border-radius:50%;width:44px;height:44px}
+body{padding-bottom:0}
+@media (max-width:900px){
+  .sys{grid-template-columns:1fr 1fr}
+  .sys__col,.sys__col:nth-child(n){padding:20px 18px 8px!important;border:1px solid var(--line)!important}
+  .steps{grid-template-columns:1fr 1fr}
+  .totop{bottom:86px}
+}
+@media (max-width:560px){
+  .sys,.steps{grid-template-columns:1fr}
+  .fab__btn span{display:none}.fab__btn{padding:0;width:56px;justify-content:center}
+  .hero4__logo{width:230px}
+}
+@media (prefers-reduced-motion:reduce){.fab__panel{animation:none}.fab.ping .fab__btn::after{animation:none}.btn:hover,.steps li:hover{transform:none}}

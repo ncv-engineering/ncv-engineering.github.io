@@ -115,6 +115,18 @@
     });
   });
 
+  // floating contact widget
+  var fab = document.getElementById('fab');
+  if (fab) {
+    var fb = fab.querySelector('.fab__btn'), fp = document.getElementById('fab-panel');
+    var setOpen = function (o) { fp.hidden = !o; fab.classList.toggle('is-open', o); fb.setAttribute('aria-expanded', o ? 'true' : 'false'); };
+    fb.addEventListener('click', function () { setOpen(fp.hidden); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !fp.hidden) { setOpen(false); fb.focus(); } });
+    document.addEventListener('click', function (e) { if (!fp.hidden && !fab.contains(e.target)) setOpen(false); });
+    fp.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+    if (!still) setTimeout(function () { fab.classList.add('ping'); }, 2500);
+  }
+
   // project gallery: open full photo in a dialog
   var lb = document.getElementById('lb');
   if (lb && lb.showModal) {
