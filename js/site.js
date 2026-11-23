@@ -40,6 +40,21 @@
     });
   }
 
+  // project gallery: open full photo in a dialog
+  var lb = document.getElementById('lb');
+  if (lb && lb.showModal) {
+    var lbImg = lb.querySelector('img'), lbCap = lb.querySelector('.lb__bar p');
+    document.querySelectorAll('.gal__btn').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var im = b.querySelector('img');
+        lbImg.src = b.dataset.full; lbImg.alt = im.alt; lbCap.textContent = im.alt;
+        lb.showModal();
+      });
+    });
+    lb.querySelector('.lb__close').addEventListener('click', function () { lb.close(); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
+  }
+
   // forms (quote + job application) -> Web3Forms
   // ใส่ access key ที่ได้จาก web3forms.com ตรงนี้ ฟอร์มทั้งสองจะส่งเข้าอีเมลบริษัท
   var WEB3FORMS_KEY = '';

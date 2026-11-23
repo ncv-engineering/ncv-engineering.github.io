@@ -331,3 +331,68 @@ p{margin:0 0 1em}
 .notice{border-left:4px solid #1d6b2f;background:#eef5ef;padding:14px 18px;margin-bottom:24px;max-width:720px}
 .err404{min-height:50vh}
 @media (max-width:560px){.jobs li{grid-template-columns:1fr;gap:6px}}
+
+/* clients v2 */
+.clients{padding:clamp(48px,6vw,80px) 0;border-bottom:1px solid var(--line)}
+.clients__head{display:flex;align-items:baseline;justify-content:space-between;gap:16px 24px;flex-wrap:wrap;margin-bottom:28px}
+.clients__head h2{font-size:clamp(24px,2.6vw,32px)}
+.logos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.logos li{display:grid;place-items:center;height:104px;padding:18px 22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.logos img{max-height:44px;max-width:100%;width:auto;height:auto;opacity:.78;mix-blend-mode:multiply}
+.names{margin-top:20px}
+.names summary{cursor:pointer;font-weight:600;display:inline-flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--ink)}
+.names summary::marker{content:""}
+.names summary::after{content:"+";font-weight:500}
+.names[open] summary::after{content:"−"}
+.names ul{columns:3 260px;column-gap:40px;list-style:none;margin:20px 0 0;padding:0}
+.names li{break-inside:avoid;padding:7px 0;border-bottom:1px solid var(--line-2);font-size:16px;line-height:1.55}
+
+/* projects with photos */
+.pj--4{grid-template-columns:7fr 5fr;grid-template-rows:auto auto auto}
+.pj--4 .pj__item--big{grid-row:span 3}
+.pj__link{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit}
+.pj__img{position:relative;overflow:hidden;background:var(--concrete);border:1px solid var(--line)}
+.pj__img img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:16/10}
+.pj--4 .pj__item--big .pj__img{flex:1}
+.pj--4 .pj__item--big .pj__img img{aspect-ratio:auto;min-height:100%;position:absolute;inset:0}
+.pj--4 .pj__item--big .pj__img{min-height:420px}
+.pj__link:hover h3{text-decoration:underline;text-underline-offset:4px}
+.pj__link:focus-visible{outline-offset:4px}
+.tels{display:flex;flex-direction:column}
+.tb__tax{display:block;font-size:14px;color:var(--steel)}
+
+/* projects page */
+.prj{display:grid;grid-template-columns:4fr 8fr;gap:40px;padding:40px 0;border-top:1px solid var(--ink);scroll-margin-top:90px}
+.prj h2{font-size:clamp(22px,2.2vw,28px);margin:6px 0 4px}
+.prj .pj__type{display:inline-block}
+.prj__desc{margin-top:14px;color:#1c2228;font-size:16.5px}
+.gal{display:grid;gap:12px;grid-template-columns:repeat(3,1fr)}
+.gal--1{grid-template-columns:1fr}.gal--2{grid-template-columns:1fr 1fr}
+.gal__btn{display:block;padding:0;border:1px solid var(--line);background:var(--concrete);cursor:zoom-in}
+.gal__btn img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.gal__btn:first-child{grid-column:1/-1}
+.gal__btn:first-child img{aspect-ratio:16/9}
+.lb{border:0;padding:0;background:transparent;max-width:min(1400px,96vw);max-height:92vh}
+.lb::backdrop{background:rgba(0,0,0,.88)}
+.lb img{display:block;max-width:100%;max-height:84vh;width:auto;height:auto;margin:0 auto}
+.lb__bar{display:flex;justify-content:space-between;align-items:center;gap:16px;color:#fff;padding:10px 2px}
+.lb__bar p{margin:0;font-size:15px}
+.lb__close{font:inherit;font-weight:600;background:#fff;color:#000;border:0;border-radius:2px;padding:8px 14px;cursor:pointer}
+
+@media (max-width:1100px){.logos{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:900px){
+  .pj--4{grid-template-columns:1fr}
+  .pj--4 .pj__item--big{grid-row:auto}
+  .pj--4 .pj__item--big .pj__img{min-height:0}
+  .pj--4 .pj__item--big .pj__img img{position:static;aspect-ratio:16/10}
+  .prj{grid-template-columns:1fr;gap:18px}
+  .logos{grid-template-columns:repeat(3,1fr)}
+  .logos li{height:84px;padding:14px}
+  .logos img{max-height:36px}
+}
+@media (max-width:560px){.logos{grid-template-columns:repeat(2,1fr)}.gal,.gal--2{grid-template-columns:1fr 1fr}}
+.pj--grid{display:grid;grid-template-columns:1fr 1fr;gap:40px 32px}
+.pj--grid .pj__img img{aspect-ratio:16/10}
+.gal--3{grid-template-columns:1fr 1fr}
+.gal--5{grid-template-columns:repeat(4,1fr)}
+@media (max-width:900px){.pj--grid{grid-template-columns:1fr;gap:32px}.gal--5{grid-template-columns:1fr 1fr}}
