@@ -21,6 +21,7 @@
 </head>
 <body>
 <a class="skip" href="#main">ข้ามไปเนื้อหา</a>
+<div aria-hidden="true" class="progress"><span></span></div>
 <header class="top">
 <div class="top__in">
 <a aria-label="N&amp;CV Engineering หน้าแรก" class="brand" href="./">
@@ -46,7 +47,8 @@
 <section class="page" aria-labelledby="w-t"><div class="wrap">
   <h1 id="w-t">ผลงานที่ผ่านมา</h1>
   <p class="lead">ตัวอย่างงานก่อสร้างและปรับปรุง ให้คลังสินค้า โรงงาน และอาคารสำนักงาน กดที่รูปเพื่อดูภาพขนาดใหญ่</p>
-  <article class="prj" id="wha-mits-warehouse">
+  <div class="filter" role="group" aria-label="กรองผลงานตามประเภท"><button type="button" class="ly" data-filter="all" aria-pressed="true">ทั้งหมด (10)</button><button type="button" class="ly" data-filter="คลังสินค้า" aria-pressed="false">คลังสินค้า</button><button type="button" class="ly" data-filter="งานโครงสร้าง" aria-pressed="false">งานโครงสร้าง</button><button type="button" class="ly" data-filter="โครงหลังคา" aria-pressed="false">โครงหลังคา</button><button type="button" class="ly" data-filter="สำนักงาน" aria-pressed="false">สำนักงาน</button><button type="button" class="ly" data-filter="สถาปัตยกรรม" aria-pressed="false">สถาปัตยกรรม</button><button type="button" class="ly" data-filter="งานพื้น" aria-pressed="false">งานพื้น</button></div>
+  <article class="prj" id="wha-mits-warehouse" data-type="คลังสินค้า" data-reveal>
     <div class="prj__meta">
       <p class="pj__type">คลังสินค้า</p>
       <h2><span class="nw">ปรับปรุงคลังสินค้า</span> <span class="nw">ก่อนส่งมอบ</span></h2>
@@ -55,7 +57,7 @@
     </div>
     <div class="gal gal--5"><button type="button" class="gal__btn" data-full="assets/img/projects/wha-mits-warehouse-1.webp"><img class="" src="assets/img/projects/wha-mits-warehouse-1-s.webp" srcset="assets/img/projects/wha-mits-warehouse-1-s.webp 755w, assets/img/projects/wha-mits-warehouse-1.webp 755w" sizes="(max-width: 700px) 100vw, 33vw" width="755" height="494" alt="ปรับปรุงคลังสินค้า ก่อนส่งมอบ — WHA × Mits Logistics (Thailand)" decoding="async" loading="lazy"></button><button type="button" class="gal__btn" data-full="assets/img/projects/wha-mits-warehouse-2.webp"><img class="" src="assets/img/projects/wha-mits-warehouse-2-s.webp" srcset="assets/img/projects/wha-mits-warehouse-2-s.webp 697w, assets/img/projects/wha-mits-warehouse-2.webp 697w" sizes="(max-width: 700px) 100vw, 33vw" width="697" height="470" alt="ปรับปรุงคลังสินค้า ก่อนส่งมอบ — WHA × Mits Logistics (Thailand) (ภาพที่ 2)" decoding="async" loading="lazy"></button><button type="button" class="gal__btn" data-full="assets/img/projects/wha-mits-warehouse-3.webp"><img class="" src="assets/img/projects/wha-mits-warehouse-3-s.webp" srcset="assets/img/projects/wha-mits-warehouse-3-s.webp 601w, assets/img/projects/wha-mits-warehouse-3.webp 601w" sizes="(max-width: 700px) 100vw, 33vw" width="601" height="450" alt="ปรับปรุงคลังสินค้า ก่อนส่งมอบ — WHA × Mits Logistics (Thailand) (ภาพที่ 3)" decoding="async" loading="lazy"></button><button type="button" class="gal__btn" data-full="assets/img/projects/wha-mits-warehouse-4.webp"><img class="" src="assets/img/projects/wha-mits-warehouse-4-s.webp" srcset="assets/img/projects/wha-mits-warehouse-4-s.webp 760w, assets/img/projects/wha-mits-warehouse-4.webp 762w" sizes="(max-width: 700px) 100vw, 33vw" width="762" height="435" alt="ปรับปรุงคลังสินค้า ก่อนส่งมอบ — WHA × Mits Logistics (Thailand) (ภาพที่ 4)" decoding="async" loading="lazy"></button><button type="button" class="gal__btn" data-full="assets/img/projects/wha-mits-warehouse-5.webp"><img class="" src="assets/img/projects/wha-mits-warehouse-5-s.webp" srcset="assets/img/projects/wha-mits-warehouse-5-s.webp 466w, assets/img/projects/wha-mits-warehouse-5.webp 466w" sizes="(max-width: 700px) 100vw, 33vw" width="466" height="499" alt="ปรับปรุงคลังสินค้า ก่อนส่งมอบ — WHA × Mits Logistics (Thailand) (ภาพที่ 5)" decoding="async" loading="lazy"></button></div>
   </article>
-  <article class="prj" id="wha-ramp">
+  <article class="prj" id="wha-ramp" data-type="งานโครงสร้าง" data-reveal>
     <div class="prj__meta">
       <p class="pj__type">งานโครงสร้าง</p>
       <h2><span class="nw">แก้ไขพื้นทรุด</span> <span class="nw">และทำทางลาดคอนกรีต</span> <span class="nw">ขึ้นลานโหลด</span></h2>
@@ -64,7 +66,7 @@
     </div>
     <div class="gal gal--2"><button type="button" class="gal__btn" data-full="assets/img/projects/wha-ramp-1.webp"><img class="" src="assets/img/projects/wha-ramp-1-s.webp" srcset="assets/img/projects/wha-ramp-1-s.webp 760w, assets/img/projects/wha-ramp-1.webp 1103w" sizes="(max-width: 700px) 100vw, 33vw" width="1103" height="606" alt="แก้ไขพื้นทรุด และทำทางลาดคอนกรีต ขึ้นลานโหลด — WHA Warehouse กม.3" decoding="async" loading="lazy"></button><button type="button" class="gal__btn" data-full="assets/img/projects/wha-ramp-2.webp"><img class="" src="assets/img/projects/wha-ramp-2-s.webp" srcset="assets/img/projects/wha-ramp-2-s.webp 760w, assets/img/projects/wha-ramp-2.webp 931w" sizes="(max-width: 700px) 100vw, 33vw" width="931" height="464" alt="แก้ไขพื้นทรุด และทำทางลาดคอนกรีต ขึ้นลานโหลด — WHA Warehouse กม.3 (ภาพที่ 2)" decoding="async" loading="lazy"></button></div>
   </article>
-  <article class="prj" id="shiseido-carport">
+  <article class="prj" id="shiseido-carport" data-type="โครงหลังคา" data-reveal>
     <div class="prj__meta">
       <p class="pj__type">โครงหลังคา</p>
       <h2><span class="nw">หลังคาโรงจอดรถ</span> <span class="nw">โครงเหล็ก</span></h2>
@@ -73,7 +75,7 @@
     </div>
     <div class="gal gal--2"><button type="button" class="gal__btn" data-full="assets/img/projects/shiseido-carport-1.webp"><img class="" src="assets/img/projects/shiseido-carport-1-s.webp" srcset="assets/img/projects/shiseido-carport-1-s.webp 760w, assets/img/projects/shiseido-carport-1.webp 1141w" sizes="(max-width: 700px) 100vw, 33vw" width="1141" height="733" alt="หลังคาโรงจอดรถ โครงเหล็ก — บริษัท ชิเซโด้ (ไทยแลนด์) จำกัด" decoding="async" loading="lazy"></button><button type="button" class="gal__btn" data-full="assets/img/projects/shiseido-carport-2.webp"><img class="" src="assets/img/projects/shiseido-carport-2-s.webp" srcset="assets/img/projects/shiseido-carport-2-s.webp 760w, assets/img/projects/shiseido-carport-2.webp 1230w" sizes="(max-width: 700px) 100vw, 33vw" width="1230" height="703" alt="แบบ 3 มิติ หลังคาโรงจอดรถโครงเหล็ก ชิเซโด้" decoding="async" loading="lazy"></button></div>
   </article>
-  <article class="prj" id="cpall-sathorn">
+  <article class="prj" id="cpall-sathorn" data-type="สำนักงาน" data-reveal>
     <div class="prj__meta">
       <p class="pj__type">สำนักงาน</p>
       <h2><span class="nw">รีโนเวทศูนย์ประชุม</span> <span class="nw">เขตสาทรแกรนด์วิลล์</span></h2>
@@ -82,7 +84,7 @@
     </div>
     <div class="gal gal--3"><button type="button" class="gal__btn" data-full="assets/img/projects/cpall-sathorn-1.webp"><img class="" src="assets/img/projects/cpall-sathorn-1-s.webp" srcset="assets/img/projects/cpall-sathorn-1-s.webp 760w, assets/img/projects/cpall-sathorn-1.webp 1235w" sizes="(max-width: 700px) 100vw, 33vw" width="1235" height="822" alt="รีโนเวทศูนย์ประชุม เขตสาทรแกรนด์วิลล์ — บริษัท ซีพี ออลล์ จำกัด (มหาชน)" decoding="async" loading="lazy"></button><button type="button" class="gal__btn" data-full="assets/img/projects/cpall-sathorn-2.webp"><img class="" src="assets/img/projects/cpall-sathorn-2-s.webp" srcset="assets/img/projects/cpall-sathorn-2-s.webp 760w, assets/img/projects/cpall-sathorn-2.webp 1205w" sizes="(max-width: 700px) 100vw, 33vw" width="1205" height="805" alt="รีโนเวทศูนย์ประชุม เขตสาทรแกรนด์วิลล์ — บริษัท ซีพี ออลล์ จำกัด (มหาชน) (ภาพที่ 2)" decoding="async" loading="lazy"></button><button type="button" class="gal__btn" data-full="assets/img/projects/cpall-sathorn-3.webp"><img class="" src="assets/img/projects/cpall-sathorn-3-s.webp" srcset="assets/img/projects/cpall-sathorn-3-s.webp 760w, assets/img/projects/cpall-sathorn-3.webp 1240w" sizes="(max-width: 700px) 100vw, 33vw" width="1240" height="828" alt="รีโนเวทศูนย์ประชุม เขตสาทรแกรนด์วิลล์ — บริษัท ซีพี ออลล์ จำกัด (มหาชน) (ภาพที่ 3)" decoding="async" loading="lazy"></button></div>
   </article>
-  <article class="prj" id="wha-tower-office">
+  <article class="prj" id="wha-tower-office" data-type="สำนักงาน" data-reveal>
     <div class="prj__meta">
       <p class="pj__type">สำนักงาน</p>
       <h2>ปรับปรุงอาคารสำนักงาน <span class="nw">ก่อนส่งมอบ</span></h2>
@@ -91,7 +93,7 @@
     </div>
     <div class="gal gal--2"><button type="button" class="gal__btn" data-full="assets/img/projects/wha-tower-office-1.webp"><img class="" src="assets/img/projects/wha-tower-office-1-s.webp" srcset="assets/img/projects/wha-tower-office-1-s.webp 760w, assets/img/projects/wha-tower-office-1.webp 1600w" sizes="(max-width: 700px) 100vw, 33vw" width="1600" height="900" alt="ปรับปรุงอาคารสำนักงาน ก่อนส่งมอบ — WHA Tower กม.7" decoding="async" loading="lazy"></button><button type="button" class="gal__btn" data-full="assets/img/projects/wha-tower-office-2.webp"><img class="" src="assets/img/projects/wha-tower-office-2-s.webp" srcset="assets/img/projects/wha-tower-office-2-s.webp 760w, assets/img/projects/wha-tower-office-2.webp 1600w" sizes="(max-width: 700px) 100vw, 33vw" width="1600" height="900" alt="ปรับปรุงอาคารสำนักงาน ก่อนส่งมอบ — WHA Tower กม.7 (ภาพที่ 2)" decoding="async" loading="lazy"></button></div>
   </article>
-  <article class="prj" id="wha-unilever-isowall">
+  <article class="prj" id="wha-unilever-isowall" data-type="สถาปัตยกรรม" data-reveal>
     <div class="prj__meta">
       <p class="pj__type">สถาปัตยกรรม</p>
       <h2><span class="nw">ห้องตากชุดทำงาน</span> <span class="nw">ผนังไอโซวอล</span></h2>
@@ -100,7 +102,7 @@
     </div>
     <div class="gal gal--3"><button type="button" class="gal__btn" data-full="assets/img/projects/wha-unilever-isowall-1.webp"><img class="" src="assets/img/projects/wha-unilever-isowall-1-s.webp" srcset="assets/img/projects/wha-unilever-isowall-1-s.webp 760w, assets/img/projects/wha-unilever-isowall-1.webp 1227w" sizes="(max-width: 700px) 100vw, 33vw" width="1227" height="897" alt="ห้องตากชุดทำงาน ผนังไอโซวอล — WHA × Unilever" decoding="async" loading="lazy"></button><button type="button" class="gal__btn" data-full="assets/img/projects/wha-unilever-isowall-2.webp"><img class="" src="assets/img/projects/wha-unilever-isowall-2-s.webp" srcset="assets/img/projects/wha-unilever-isowall-2-s.webp 760w, assets/img/projects/wha-unilever-isowall-2.webp 1196w" sizes="(max-width: 700px) 100vw, 33vw" width="1196" height="846" alt="ห้องตากชุดทำงาน ผนังไอโซวอล — WHA × Unilever (ภาพที่ 2)" decoding="async" loading="lazy"></button><button type="button" class="gal__btn" data-full="assets/img/projects/wha-unilever-isowall-3.webp"><img class="" src="assets/img/projects/wha-unilever-isowall-3-s.webp" srcset="assets/img/projects/wha-unilever-isowall-3-s.webp 760w, assets/img/projects/wha-unilever-isowall-3.webp 934w" sizes="(max-width: 700px) 100vw, 33vw" width="934" height="924" alt="ห้องตากชุดทำงาน ผนังไอโซวอล — WHA × Unilever (ภาพที่ 3)" decoding="async" loading="lazy"></button></div>
   </article>
-  <article class="prj" id="chotithanawat-warehouse">
+  <article class="prj" id="chotithanawat-warehouse" data-type="คลังสินค้า" data-reveal>
     <div class="prj__meta">
       <p class="pj__type">คลังสินค้า</p>
       <h2><span class="nw">ปรับปรุงคลังสินค้า</span></h2>
@@ -109,16 +111,16 @@
     </div>
     <div class="gal gal--3"><button type="button" class="gal__btn" data-full="assets/img/projects/chotithanawat-warehouse-1.webp"><img class="" src="assets/img/projects/chotithanawat-warehouse-1-s.webp" srcset="assets/img/projects/chotithanawat-warehouse-1-s.webp 352w, assets/img/projects/chotithanawat-warehouse-1.webp 352w" sizes="(max-width: 700px) 100vw, 33vw" width="352" height="280" alt="ปรับปรุงคลังสินค้า — อาคารโชติธนวัฒน์ กม.16" decoding="async" loading="lazy"></button><button type="button" class="gal__btn" data-full="assets/img/projects/chotithanawat-warehouse-2.webp"><img class="" src="assets/img/projects/chotithanawat-warehouse-2-s.webp" srcset="assets/img/projects/chotithanawat-warehouse-2-s.webp 394w, assets/img/projects/chotithanawat-warehouse-2.webp 394w" sizes="(max-width: 700px) 100vw, 33vw" width="394" height="288" alt="ปรับปรุงคลังสินค้า — อาคารโชติธนวัฒน์ กม.16 (ภาพที่ 2)" decoding="async" loading="lazy"></button><button type="button" class="gal__btn" data-full="assets/img/projects/chotithanawat-warehouse-3.webp"><img class="" src="assets/img/projects/chotithanawat-warehouse-3-s.webp" srcset="assets/img/projects/chotithanawat-warehouse-3-s.webp 405w, assets/img/projects/chotithanawat-warehouse-3.webp 405w" sizes="(max-width: 700px) 100vw, 33vw" width="405" height="303" alt="ปรับปรุงคลังสินค้า — อาคารโชติธนวัฒน์ กม.16 (ภาพที่ 3)" decoding="async" loading="lazy"></button></div>
   </article>
-  <article class="prj" id="kureha-pool">
+  <article class="prj" id="kureha-pool" data-type="สถาปัตยกรรม" data-reveal>
     <div class="prj__meta">
-      <p class="pj__type">งานสถาปัตยกรรม</p>
+      <p class="pj__type">สถาปัตยกรรม</p>
       <h2><span class="nw">ปูกระเบื้อง</span> <span class="nw">และแก้ไขโครงสร้าง</span> <span class="nw">รอบสระว่ายน้ำ</span></h2>
       <p class="pj__client">บริษัท คุเรฮะ (ไทยแลนด์) สัตหีบ</p>
       <p class="prj__desc"><span class="nw">แก้ไขโครงสร้างขอบสระ</span> <span class="nw">และปูกระเบื้องพื้น</span> <span class="nw">รอบสระว่ายน้ำ</span> <span class="nw">ใหม่ทั้งหมด</span></p>
     </div>
     <div class="gal gal--2"><button type="button" class="gal__btn" data-full="assets/img/projects/kureha-pool-1.webp"><img class="" src="assets/img/projects/kureha-pool-1-s.webp" srcset="assets/img/projects/kureha-pool-1-s.webp 760w, assets/img/projects/kureha-pool-1.webp 1600w" sizes="(max-width: 700px) 100vw, 33vw" width="1600" height="848" alt="ปูกระเบื้อง และแก้ไขโครงสร้าง รอบสระว่ายน้ำ — บริษัท คุเรฮะ (ไทยแลนด์) สัตหีบ" decoding="async" loading="lazy"></button><button type="button" class="gal__btn" data-full="assets/img/projects/kureha-pool-2.webp"><img class="" src="assets/img/projects/kureha-pool-2-s.webp" srcset="assets/img/projects/kureha-pool-2-s.webp 760w, assets/img/projects/kureha-pool-2.webp 1229w" sizes="(max-width: 700px) 100vw, 33vw" width="1229" height="671" alt="ปูกระเบื้อง และแก้ไขโครงสร้าง รอบสระว่ายน้ำ — บริษัท คุเรฮะ (ไทยแลนด์) สัตหีบ (ภาพที่ 2)" decoding="async" loading="lazy"></button></div>
   </article>
-  <article class="prj" id="sj-infinite-office">
+  <article class="prj" id="sj-infinite-office" data-type="สำนักงาน" data-reveal>
     <div class="prj__meta">
       <p class="pj__type">สำนักงาน</p>
       <h2>ปรับปรุงห้องอาคารสำนักงาน</h2>
@@ -127,7 +129,7 @@
     </div>
     <div class="gal gal--2"><button type="button" class="gal__btn" data-full="assets/img/projects/sj-infinite-office-1.webp"><img class="" src="assets/img/projects/sj-infinite-office-1-s.webp" srcset="assets/img/projects/sj-infinite-office-1-s.webp 760w, assets/img/projects/sj-infinite-office-1.webp 904w" sizes="(max-width: 700px) 100vw, 33vw" width="904" height="499" alt="ปรับปรุงห้องอาคารสำนักงาน — อาคาร SJ INFINITE" decoding="async" loading="lazy"></button><button type="button" class="gal__btn" data-full="assets/img/projects/sj-infinite-office-2.webp"><img class="" src="assets/img/projects/sj-infinite-office-2-s.webp" srcset="assets/img/projects/sj-infinite-office-2-s.webp 726w, assets/img/projects/sj-infinite-office-2.webp 726w" sizes="(max-width: 700px) 100vw, 33vw" width="726" height="556" alt="ปรับปรุงห้องอาคารสำนักงาน — อาคาร SJ INFINITE (ภาพที่ 2)" decoding="async" loading="lazy"></button></div>
   </article>
-  <article class="prj" id="cpall-firepump-epoxy">
+  <article class="prj" id="cpall-firepump-epoxy" data-type="งานพื้น" data-reveal>
     <div class="prj__meta">
       <p class="pj__type">งานพื้น</p>
       <h2><span class="nw">พื้นอีพ็อกซีห้อง</span> Fire Pump</h2>
@@ -167,6 +169,7 @@
 </div>
 </div>
 </footer>
+<a aria-label="กลับขึ้นด้านบน" class="totop" href="#main">▲</a>
 <div aria-label="ติดต่อด่วน" class="mbar">
 <a href="tel:0890231676">โทร</a>
 <a href="https://line.me/ti/p/NKvT3lnW9f" rel="noopener">LINE</a>

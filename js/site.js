@@ -40,6 +40,81 @@
     });
   }
 
+
+  // ---------- motion layer (all of it respects reduced-motion) ----------
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+
+  // header shadow + red scroll-progress bar
+  var top = document.querySelector('.top'), bar = document.querySelector('.progress span'), totop = document.querySelector('.totop');
+  var onScroll = function () {
+    var y = window.scrollY, h = document.documentElement.scrollHeight - window.innerHeight;
+    if (top) top.classList.toggle('is-scrolled', y > 8);
+    if (bar) bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(y / h, 1) : 0) + ')';
+    if (totop) totop.classList.toggle('is-on', y > 900);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // reveal cards once when they enter the screen
+  var rev = document.querySelectorAll('[data-reveal]');
+  if (!still && hasIO && rev.length) {
+    root.classList.add('rv');
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    rev.forEach(function (el, i) { el.style.setProperty('--d', (i % 3) * 90 + 'ms'); io.observe(el); });
+  }
+
+  // count-up numbers in the red band
+  var nums = document.querySelectorAll('[data-count]');
+  if (!still && hasIO && nums.length) {
+    var cio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target, end = +el.dataset.count, suf = el.dataset.suffix || '', t0 = null;
+        var step = function (t) {
+          if (!t0) t0 = t;
+          var k = Math.min((t - t0) / 1100, 1), v = Math.round(end * (1 - Math.pow(1 - k, 3)));
+          el.textContent = v + (k === 1 ? suf : '');
+          if (k < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step); cio.unobserve(el);
+      });
+    }, { threshold: .6 });
+    nums.forEach(function (n) { cio.observe(n); });
+  }
+
+  // building section draws itself when it scrolls into view
+  if (sect && hasIO) {
+    sect.classList.remove('build');
+    var sio = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { sect.classList.add('build'); sio.disconnect(); }
+    }, { threshold: .25 });
+    sio.observe(sect);
+  }
+
+  // hero slideshow
+  var slides = document.querySelectorAll('.slides .slide'), dots = document.querySelectorAll('.slides__dots i');
+  if (slides.length > 1) {
+    var cur = 0;
+    var show = function (i) {
+      slides[cur].classList.remove('is-on'); if (dots[cur]) dots[cur].classList.remove('on');
+      cur = i; slides[cur].classList.add('is-on'); if (dots[cur]) dots[cur].classList.add('on');
+    };
+    if (dots[0]) dots[0].classList.add('on');
+    if (!still) setInterval(function () { if (!document.hidden) show((cur + 1) % slides.length); }, 4200);
+  }
+
+  // projects page: filter by type
+  var fbtn = document.querySelectorAll('[data-filter]');
+  fbtn.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.dataset.filter;
+      fbtn.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      document.querySelectorAll('.prj').forEach(function (p) { p.hidden = !(f === 'all' || p.dataset.type === f); });
+    });
+  });
+
   // project gallery: open full photo in a dialog
   var lb = document.getElementById('lb');
   if (lb && lb.showModal) {
