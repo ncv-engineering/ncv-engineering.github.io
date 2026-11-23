@@ -142,8 +142,9 @@
     lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
   }
 
-  // forms (quote + job application) -> Web3Forms
-  // ใส่ access key ที่ได้จาก web3forms.com ตรงนี้ ฟอร์มทั้งสองจะส่งเข้าอีเมลบริษัท
+  // forms (quote + job application) -> email via FormSubmit
+  var FORM_TO = 'suwisit.ncv@gmail.com';
+  var FORM_CC = 'vichitnam@yahoo.com';
   var WEB3FORMS_KEY = '';
   document.querySelectorAll('form[data-form]').forEach(function (form) {
     var msg = form.querySelector('.form__msg');
@@ -171,25 +172,31 @@
         msg.classList.add('err'); tel.focus(); return;
       }
       if (form.elements.botcheck && form.elements.botcheck.checked) return;
-      if (!WEB3FORMS_KEY) {
-        msg.textContent = 'ฟอร์มยังไม่เปิดใช้ ระหว่างนี้โทร 089-023-1676 หรือส่งทาง LINE';
-        msg.classList.add('err'); return;
-      }
       btn.disabled = true; btn.textContent = 'กำลังส่ง…';
       var data = new FormData(form);
-      data.append('access_key', WEB3FORMS_KEY);
-      data.append('subject', form.dataset.subject);
-      data.append('from_name', 'เว็บไซต์ N&CV Engineering');
-      fetch('https://api.web3forms.com/submit', { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+      data.delete('botcheck');
+      var url = 'https://formsubmit.co/ajax/' + FORM_TO;
+      data.append('_subject', form.dataset.subject + ' — ' + (form.querySelector('select') ? form.querySelector('select').value : ''));
+      data.append('_cc', FORM_CC);
+      data.append('_template', 'table');
+      data.append('_captcha', 'false');
+      if (WEB3FORMS_KEY) {
+        url = 'https://api.web3forms.com/submit';
+        data.append('access_key', WEB3FORMS_KEY);
+        data.append('subject', form.dataset.subject);
+      }
+      fetch(url, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
         .then(function (r) { return r.json(); })
         .then(function (j) {
-          if (!j.success) throw new Error(j.message || 'fail');
+          if (!(j.success === true || j.success === 'true')) throw new Error(j.message || 'fail');
           form.reset();
           msg.textContent = form.dataset.ok;
           msg.classList.add('ok');
         })
-        .catch(function () {
-          msg.textContent = 'ส่งไม่สำเร็จเพราะการเชื่อมต่อ โทร 089-023-1676 แทนได้';
+        .catch(function (err) {
+          msg.textContent = /activat/i.test(err && err.message || '')
+            ? 'ระบบรับฟอร์มกำลังรอยืนยันอีเมลบริษัท ระหว่างนี้โทร 089-023-1676 หรือส่งทาง LINE'
+            : 'ส่งไม่สำเร็จเพราะการเชื่อมต่อ โทร 089-023-1676 แทนได้';
           msg.classList.add('err');
         })
         .then(function () { btn.disabled = false; btn.textContent = btnText; });
