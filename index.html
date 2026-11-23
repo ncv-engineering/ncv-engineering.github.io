@@ -1,517 +1,442 @@
 <!DOCTYPE html>
+
 <html lang="th">
 <head>
-    <meta name="google-site-verification" content="347ccyj2WPlnT-CvVRd_avqrvTC7numjDqYNuard7wk" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N & CV-ENGINEERING CO.,LTD | บริษัทรับเหมาก่อสร้างและวิศวกรรม</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* ================= THEME VARIABLES ================= */
-        :root {
-            --primary: #0c1f38; /* Navy Blue */
-            --secondary: #c9a050; /* Gold */
-            --text-dark: #1e293b;
-            --text-light: #475569;
-            --bg-light: #f8fafc;
-            --white: #ffffff;
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Prompt', sans-serif; color: var(--text-dark); background: var(--white); line-height: 1.8; overflow-x: hidden; }
-        h1, h2, h3, h4 { font-family: 'Montserrat', 'Prompt', sans-serif; font-weight: 700; }
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        img { max-width: 100%; height: auto; display: block; }
-
-        /* ================= 1. NAVBAR ================= */
-        .navbar {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px);
-            box-shadow: 0 4px 30px rgba(0,0,0,0.05); padding: 15px 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            transition: var(--transition);
-        }
-        .brand-text { display: flex; align-items: center; gap: 12px; }
-        .brand-icon { background: var(--primary); color: var(--secondary); width: 45px; height: 45px; display: flex; justify-content: center; align-items: center; border-radius: 10px; font-size: 1.3rem; }
-        .brand-name { font-weight: 900; font-size: 1.4rem; color: var(--primary); letter-spacing: 1px; line-height: 1.1; }
-        .brand-name span { color: var(--secondary); display: block; font-size: 0.85rem; letter-spacing: 2px; font-weight: 600;}
-        
-        .nav-links { display: flex; gap: 35px; list-style: none; }
-        .nav-links a { color: var(--primary); font-weight: 600; text-transform: uppercase; font-size: 15px; position: relative; padding-bottom: 5px;}
-        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--secondary); transition: var(--transition); border-radius: 2px;}
-        .nav-links a:hover::after { width: 100%; }
-
-        /* ================= 2. HERO SECTION (อัปเกรดเทคนิคขั้นสูง) ================= */
-        .hero {
-            height: 100vh;
-            display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 0 5%; position: relative;
-            overflow: hidden; /* ป้องกันภาพพื้นหลังล้นตอนซูม */
-        }
-
-        /* พื้นหลังขยับได้ (Ken Burns Effect) */
-        .hero-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://images.unsplash.com/photo-1541888088322-264906f794db?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
-            z-index: 1;
-            animation: zoomBg 20s infinite alternate linear;
-        }
-        @keyframes zoomBg { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
-
-        /* Overlay ย้อมสี และ ลายเส้นตารางแปลนวิศวกรรม */
-        .hero-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(12,31,56,0.95) 0%, rgba(12,31,56,0.85) 100%);
-            z-index: 2;
-        }
-        .hero-grid {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 3;
-            opacity: 0.8;
-        }
-
-        /* คอนเทนต์ด้านหน้าสุด */
-        .hero-content { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; width: 100%; }
-        
-        /* กล่องโลโก้เรืองแสง + ลอยได้ */
-        .hero-logo-box { 
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(201, 160, 80, 0.3), inset 0 0 20px rgba(255,255,255,1);
-            border: 2px solid var(--secondary);
-            margin-top: 60px;
-            margin-bottom: 30px;
-            display: inline-block;
-            animation: floatLogo 4s ease-in-out infinite;
-        }
-        @keyframes floatLogo { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-        .hero-logo-box img { max-width: 350px; width: 100%; object-fit: contain; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1)); }
-
-        /* ตัวหนังสือ Gradient วิ่งได้ (Shine Effect) */
-        .hero h1 { 
-            font-size: 3.2rem; margin-bottom: 20px; font-weight: 900; letter-spacing: 1px; line-height: 1.3;
-            background: linear-gradient(to right, #ffffff, #c9a050, #ffffff);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 5s linear infinite;
-        }
-        @keyframes shine { to { background-position: 200% center; } }
-        
-        .hero p { color: var(--white); font-size: 1.25rem; max-width: 800px; opacity: 0.9; margin-bottom: 40px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-
-        /* ปุ่มกด 2 สไตล์เพิ่มลูกเล่น */
-        .hero-btn-group { display: flex; gap: 20px; }
-        .hero-btn { padding: 15px 35px; border-radius: 50px; font-weight: 700; font-size: 1.1rem; transition: var(--transition); cursor: pointer; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 10px;}
-        .hero-btn-primary { background: var(--secondary); color: var(--primary); border: 2px solid var(--secondary); box-shadow: 0 10px 20px rgba(201,160,80,0.3); }
-        .hero-btn-primary:hover { background: transparent; color: var(--secondary); transform: translateY(-3px); }
-        .hero-btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.5); backdrop-filter: blur(5px); }
-        .hero-btn-outline:hover { background: var(--white); color: var(--primary); transform: translateY(-3px); border-color: var(--white); }
-
-        /* ลูกศรเลื่อนลง (Bouncing Scroll Indicator) */
-        .scroll-indicator {
-            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
-            display: flex; flex-direction: column; align-items: center; gap: 10px;
-            color: rgba(255,255,255,0.6); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;
-            z-index: 10; animation: bounce 2s infinite; cursor: pointer; transition: var(--transition);
-        }
-        .scroll-indicator:hover { color: var(--secondary); }
-        .scroll-indicator i { font-size: 1.5rem; color: var(--secondary); }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-15px) translateX(-50%); } 60% { transform: translateY(-7px) translateX(-50%); } }
-
-        /* ================= 3. SECTIONS & ABOUT ================= */
-        .section { padding: 100px 5%; }
-        .bg-light { background-color: var(--bg-light); }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 2.8rem; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
-        .divider { height: 4px; width: 80px; background: var(--secondary); margin: 15px auto; border-radius: 2px; }
-
-        .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center;}
-        .about-content { padding-right: 20px; }
-        .about-content h3 { font-size: 2.2rem; color: var(--primary); margin-bottom: 25px; line-height: 1.3;}
-        .about-content p { color: var(--text-light); margin-bottom: 20px; font-size: 1.15rem; text-align: justify; }
-        
-        .highlight-quote {
-            border-left: 5px solid var(--secondary);
-            background: #f1f5f9;
-            padding: 20px 25px;
-            border-radius: 0 10px 10px 0;
-            margin: 30px 0;
-            font-weight: 500;
-            color: var(--primary);
-            font-size: 1.1rem;
-        }
-
-        .about-image { position: relative; }
-        .about-image img { border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); z-index: 2; position: relative; }
-        .about-image::after { content: ''; position: absolute; top: -20px; right: -20px; width: 100%; height: 100%; border: 4px solid var(--secondary); border-radius: 15px; z-index: 1; }
-
-        /* ================= 4. WORKFLOW ================= */
-        .workflow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .workflow-step { text-align: center; padding: 40px 20px; position: relative; }
-        .workflow-step::after { content: '\f105'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; top: 50px; right: -15px; font-size: 24px; color: #cbd5e1; }
-        .workflow-step:last-child::after { display: none; }
-        .step-icon { width: 80px; height: 80px; background: var(--primary); color: var(--secondary); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; margin: 0 auto 20px; box-shadow: 0 10px 20px rgba(12,31,56,0.2); }
-        .workflow-step h4 { font-size: 1.3rem; color: var(--primary); margin-bottom: 10px; }
-        .workflow-step p { color: var(--text-light); font-size: 0.95rem; }
-
-        /* ================= 5. PORTFOLIO ================= */
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .portfolio-item { position: relative; border-radius: 15px; overflow: hidden; height: 320px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); cursor: pointer; background: var(--primary); }
-        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; opacity: 0.9;}
-        .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,31,56,0.95) 0%, rgba(12,31,56,0.4) 50%, rgba(12,31,56,0.1) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; transition: var(--transition); }
-        .portfolio-item:hover img { transform: scale(1.1); opacity: 0.5;}
-        .zoom-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); color: var(--secondary); font-size: 3rem; opacity: 0; transition: var(--transition); }
-        .portfolio-item:hover .zoom-icon { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-        .portfolio-overlay h3 { color: var(--secondary); font-size: 1.5rem; margin-bottom: 5px; transform: translateY(20px); transition: var(--transition); }
-        .portfolio-overlay p { color: var(--white); transform: translateY(20px); transition: var(--transition); transition-delay: 0.1s; }
-        .portfolio-item:hover .portfolio-overlay h3, .portfolio-item:hover .portfolio-overlay p { transform: translateY(0); }
-
-        /* LIGHTBOX MODAL */
-        .modal { display: none; position: fixed; z-index: 2000; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(12, 31, 56, 0.95); backdrop-filter: blur(8px); }
-        .modal-content { margin: auto; display: block; max-width: 90%; max-height: 80vh; border-radius: 10px; box-shadow: 0 0 50px rgba(0,0,0,0.5); animation: zoomIn 0.4s ease; object-fit: contain;}
-        #caption { margin: auto; display: block; width: 80%; max-width: 700px; text-align: center; color: var(--secondary); padding: 20px 0; font-size: 1.5rem; font-weight: 700;}
-        .close-modal { position: absolute; top: 30px; right: 40px; color: var(--white); font-size: 50px; font-weight: bold; transition: 0.3s; cursor: pointer; }
-        .close-modal:hover { color: var(--secondary); transform: scale(1.1); }
-        @keyframes zoomIn { from {transform:scale(0.8); opacity:0;} to {transform:scale(1); opacity:1;} }
-
-        /* ================= 6. CAREERS FORM ================= */
-        .careers-container { background: var(--white); max-width: 800px; margin: 0 auto; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); padding: 50px; border-top: 5px solid var(--secondary);}
-        .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; font-weight: 600; color: var(--primary); margin-bottom: 8px; }
-        .form-control { width: 100%; padding: 15px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: 'Prompt'; transition: var(--transition); background: var(--bg-light); }
-        .form-control:focus { border-color: var(--secondary); outline: none; background: var(--white); box-shadow: 0 0 0 4px rgba(201,160,80,0.1); }
-        .form-control[type="file"] { background: var(--white); border: 2px dashed #cbd5e1; padding: 15px; cursor: pointer; }
-        
-        .btn-submit { background: var(--primary); color: var(--white); width: 100%; padding: 18px; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: var(--transition); margin-top: 10px;}
-        .btn-submit:hover { background: var(--secondary); color: var(--primary); box-shadow: 0 10px 20px rgba(201,160,80,0.2); }
-
-        /* ================= 7. FLOATING ACTION BUTTONS ================= */
-        .fab-container { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
-        .fab-wrapper { position: relative; display: flex; align-items: center; justify-content: flex-end; }
-        .fab-tooltip { 
-            position: absolute; right: 75px; background: var(--primary); color: var(--white); 
-            padding: 8px 15px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
-            opacity: 0; pointer-events: none; transition: var(--transition); transform: translateX(10px);
-            white-space: nowrap; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        .fab-tooltip::after {
-            content: ''; position: absolute; right: -6px; top: 50%; transform: translateY(-50%);
-            border-width: 6px 0 6px 6px; border-style: solid; border-color: transparent transparent transparent var(--primary);
-        }
-        .fab-wrapper:hover .fab-tooltip { opacity: 1; transform: translateX(0); }
-
-        .fab-btn { 
-            width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; 
-            font-size: 28px; color: var(--white); box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
-            transition: var(--transition); position: relative;
-        }
-        .fab-line { background: #00B900; }
-        .fab-phone { background: var(--secondary); color: var(--primary); }
-        .fab-btn:hover { transform: scale(1.1); }
-        
-        .fab-btn::after { content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%; z-index: -1; animation: ripple 2s infinite; }
-        .fab-line::after { background: #00B900; }
-        .fab-phone::after { background: var(--secondary); }
-        @keyframes ripple { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.5); opacity: 0; } }
-
-        /* ================= FOOTER ================= */
-        footer { background: #05101f; color: #94a3b8; text-align: center; padding: 40px 5%; font-size: 0.95rem; }
-        
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        @media (max-width: 992px) {
-            .about-grid { grid-template-columns: 1fr; }
-            .workflow-step::after { display: none; }
-        }
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-logo-box img { max-width: 250px; }
-            .hero h1 { font-size: 2rem; background-size: 300% auto; }
-            .hero-btn-group { flex-direction: column; width: 100%; padding: 0 20px; }
-            .hero-btn { justify-content: center; width: 100%; }
-            .hero p { font-size: 1.1rem; padding: 0 15px;}
-        }
-    </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="347ccyj2WPlnT-CvVRd_avqrvTC7numjDqYNuard7wk" name="google-site-verification"/>
+<title>N&amp;CV Engineering | บริษัทรับเหมาก่อสร้าง งานโครงสร้าง หลังคา สถาปัตย์ และงานระบบ มีนบุรี</title>
+<meta content="บริษัท เอ็น แอนด์ ซีวี-เอ็นจิเนียริ่ง จำกัด บริษัทรับเหมาก่อสร้างโรงงาน คลังสินค้า และอาคาร รับงานโครงสร้าง โครงหลังคาเหล็ก งานสถาปัตยกรรม ระบบสุขาภิบาล และระบบไฟฟ้า ตั้งแต่ปี 2554 มีนบุรี กรุงเทพฯ" name="description"/>
+<link href="https://www.ncv-engineering.com/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="N&amp;CV Engineering — บริษัทรับเหมาก่อสร้าง ตั้งแต่ฐานรากถึงหลังคา" property="og:title"/>
+<meta content="งานโครงสร้าง โครงหลังคา สถาปัตยกรรม สุขาภิบาล และไฟฟ้า โดยผู้รับเหมาหลักรายเดียว ตั้งแต่ปี 2554" property="og:description"/>
+<meta content="https://www.ncv-engineering.com/" property="og:url"/>
+<meta content="th_TH" property="og:locale"/>
+<meta content="#000000" name="theme-color"/>
+<link as="font" crossorigin="" href="assets/fonts/baijam-700.woff" rel="preload" type="font/woff"/>
+<link as="font" crossorigin="" href="assets/fonts/plexthai-400.woff" rel="preload" type="font/woff"/>
+<link href="css/site.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "บริษัท เอ็น แอนด์ ซีวี-เอ็นจิเนียริ่ง จำกัด",
+  "alternateName": "N&CV Engineering Co., Ltd.",
+  "url": "https://www.ncv-engineering.com/",
+  "logo": "https://www.ncv-engineering.com/assets/img/logo.webp",
+  "telephone": "+66890231676",
+  "foundingDate": "2011",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "69/113 ถนนหทัยราษฎร์ แขวงมีนบุรี",
+    "addressLocality": "เขตมีนบุรี",
+    "addressRegion": "กรุงเทพมหานคร",
+    "addressCountry": "TH"
+  },
+  "areaServed": ["กรุงเทพมหานคร", "ปริมณฑล", "ภาคกลาง", "ภาคตะวันออก"],
+  "knowsAbout": ["งานโครงสร้าง", "เสาเข็มและฐานราก", "โครงหลังคาเหล็ก", "งานสถาปัตยกรรม", "ระบบสุขาภิบาล", "ระบบไฟฟ้า"]
+}
+</script>
 </head>
 <body>
-
-    <nav class="navbar" id="navbar">
-        <a href="#" class="brand-text">
-            <div class="brand-icon"><i class="fas fa-city"></i></div>
-            <div class="brand-name">N&CV<span>ENGINEERING</span></div>
-        </a>
-        <ul class="nav-links">
-            <li><a href="#home">หน้าแรก</a></li>
-            <li><a href="#about">เกี่ยวกับเรา</a></li>
-            <li><a href="#portfolio">ผลงาน</a></li>
-            <li><a href="#careers">ร่วมงานกับเรา</a></li>
-        </ul>
-    </nav>
-
-    <section id="home" class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-grid"></div>
-
-        <div class="hero-content">
-            <div class="hero-logo-box reveal">
-                <img src="new logo.png" alt="N&CV Engineering Logo" onerror="this.src='logo.jpg'">
-            </div>
-            
-            <h1 class="reveal">ผู้เชี่ยวชาญด้านงานก่อสร้าง<br>และวิศวกรรมครบวงจร</h1>
-            
-            <p class="reveal">มุ่งเน้นคุณภาพ ระยะเวลา และงบประมาณที่สมดุล เพื่อส่งมอบผลงานที่ได้มาตรฐานและปลอดภัยสูงสุด</p>
-            
-            <div class="hero-btn-group reveal">
-                <a href="#about" class="hero-btn hero-btn-primary"><i class="fas fa-info-circle"></i> ทำความรู้จักเรา</a>
-                <a href="#portfolio" class="hero-btn hero-btn-outline"><i class="fas fa-hard-hat"></i> ดูผลงานของเรา</a>
-            </div>
-        </div>
-
-        <a href="#about" class="scroll-indicator">
-            <span>Scroll Down</span>
-            <i class="fas fa-chevron-down"></i>
-        </a>
-    </section>
-
-    <section id="about" class="section">
-        <div class="section-title reveal">
-            <h2>ประวัติบริษัท</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="about-grid">
-            <div class="about-content reveal">
-                <h3>รากฐานที่มั่นคง<br>เพื่อความสำเร็จของโครงการ</h3>
-                <p>บริษัท เอ็น แอนด์ ซีวี-เอ็นจิเนียริ่ง จำกัด จัดตั้งขึ้นในปี พ.ศ. 2554 ด้วยทุนจดทะเบียน 5 ล้านบาท โดยมีบุคลากรทั้งฝ่ายวิศวกรรม ฝ่ายก่อสร้าง และช่างเทคนิคกว่า 20 ชีวิต ที่มีความเชี่ยวชาญและพร้อมทุ่มเทเพื่อลูกค้า</p>
-                
-                <div class="highlight-quote">
-                    "เราให้บริการครอบคลุมตั้งแต่งานก่อสร้างโรงงาน คลังสินค้า ไปจนถึงงานระบบไฟฟ้าอุตสาหกรรม โดยยึดหลักการตัดสินใจบนพื้นฐานของข้อมูลจริง (Evidence-based)"
-                </div>
-
-                <p>ด้วยประสบการณ์ที่ยาวนาน เราบริหารงานตามมาตรฐาน ISO ควบคู่ไปกับความปลอดภัยขั้นสูงสุด โดยมีเจ้าหน้าที่ความปลอดภัยระดับวิชาชีพ (จป.) คอยควบคุมงานและตรวจสอบสภาพหน้างานอย่างเคร่งครัดในทุกวัน</p>
-            </div>
-            <div class="about-image reveal">
-                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Construction Management">
-            </div>
-        </div>
-    </section>
-
-    <section class="section bg-light">
-        <div class="section-title reveal">
-            <h2>ขั้นตอนการบริการของเรา</h2>
-            <div class="divider"></div>
-            <p style="color: var(--text-light);">บริหารงานอย่างเป็นระบบ เพื่อผลลัพธ์ที่ดีที่สุดสำหรับคู่ค้า</p>
-        </div>
-        <div class="workflow-grid">
-            <div class="workflow-step reveal">
-                <div class="step-icon"><i class="fas fa-comments"></i></div>
-                <h4>1. ให้คำปรึกษาและประเมิน</h4>
-                <p>รับฟังความต้องการ ลงพื้นที่สำรวจหน้างาน และประเมินราคาตามงบประมาณอย่างสมเหตุสมผล</p>
-            </div>
-            <div class="workflow-step reveal">
-                <div class="step-icon"><i class="fas fa-drafting-compass"></i></div>
-                <h4>2. ออกแบบและวางแผน</h4>
-                <p>ออกแบบโครงสร้าง ระบบไฟฟ้า และสถาปัตยกรรมให้ถูกต้องตามหลักวิศวกรรม</p>
-            </div>
-            <div class="workflow-step reveal">
-                <div class="step-icon"><i class="fas fa-hard-hat"></i></div>
-                <h4>3. ดำเนินการก่อสร้าง</h4>
-                <p>ควบคุมงานก่อสร้างโดยทีมวิศวกรผู้เชี่ยวชาญ พร้อมเน้นย้ำความปลอดภัย (Safety First)</p>
-            </div>
-            <div class="workflow-step reveal">
-                <div class="step-icon"><i class="fas fa-handshake"></i></div>
-                <h4>4. ส่งมอบและรับประกัน</h4>
-                <p>ตรวจสอบคุณภาพงานก่อนส่งมอบ พร้อมการรับประกันงานโครงสร้างและระบบไฟฟ้า 1 ปีเต็ม</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio" class="section">
-        <div class="section-title reveal">
-            <h2>ตัวอย่างผลงาน</h2>
-            <div class="divider"></div>
-            <p style="color: var(--text-light);">คลิกที่รูปภาพเพื่อขยายดูรายละเอียด</p>
-        </div>
-        <div class="portfolio-grid">
-            <div class="portfolio-item reveal" onclick="openLightbox(this)">
-                <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="โครงการก่อสร้างคลังกระจายสินค้า CP ALL / WHA Logistics">
-                <i class="fas fa-search-plus zoom-icon"></i>
-                <div class="portfolio-overlay">
-                    <h3>คลังกระจายสินค้า</h3>
-                    <p>CP ALL / WHA Logistics</p>
-                </div>
-            </div>
-            <div class="portfolio-item reveal" onclick="openLightbox(this)">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="งานปรับปรุงสำนักงาน ตึก CP Tower สีลม / SJ INFINITE">
-                <i class="fas fa-search-plus zoom-icon"></i>
-                <div class="portfolio-overlay">
-                    <h3>ปรับปรุงสำนักงาน</h3>
-                    <p>ตึก CP Tower / SJ INFINITE</p>
-                </div>
-            </div>
-            <div class="portfolio-item reveal" onclick="openLightbox(this)">
-                <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="งานติดตั้งตู้ควบคุมไฟฟ้า (MDB) โรงงาน KCE / SHISEIDO">
-                <i class="fas fa-search-plus zoom-icon"></i>
-                <div class="portfolio-overlay">
-                    <h3>งานระบบไฟฟ้าโรงงาน</h3>
-                    <p>ตู้ควบคุมไฟฟ้า / โรงงาน KCE</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div id="lightboxModal" class="modal">
-        <span class="close-modal" onclick="closeLightbox()">&times;</span>
-        <img class="modal-content" id="lightboxImg">
-        <div id="caption"></div>
+<a class="skip" href="#main">ข้ามไปเนื้อหา</a>
+<header class="top">
+<div class="top__in">
+<a aria-label="N&amp;CV Engineering หน้าแรก" class="brand" href="./">
+<img alt="บริษัท เอ็น แอนด์ ซีวี-เอ็นจิเนียริ่ง จำกัด" height="187" src="assets/img/logo.webp" width="440"/>
+</a>
+<nav aria-label="เมนูหลัก" class="nav">
+<button aria-controls="nav-list" aria-expanded="false" class="nav__toggle" type="button">เมนู</button>
+<ul id="nav-list">
+<li><a href="#systems">งานที่รับ</a></li>
+<li><a href="#projects">ผลงาน</a></li>
+<li><a href="#about">เกี่ยวกับเรา</a></li>
+<li><a href="#careers">ร่วมงาน</a></li>
+<li><a href="#contact">ติดต่อ</a></li>
+</ul>
+</nav>
+<div class="top__cta">
+<a class="tel" href="tel:0890231676">089-023-1676</a>
+<a class="btn btn--red" href="#contact">ขอใบเสนอราคา</a>
+</div>
+</div>
+</header>
+<main id="main">
+<!-- HERO -->
+<section aria-labelledby="hero-title" class="hero2">
+<div class="wrap hero2__head">
+<h1 id="hero-title"><span class="nw">บริษัทรับเหมาก่อสร้าง</span> <span class="nw h1-sub">ตั้งแต่ฐานรากถึงหลังคา</span></h1>
+<div class="hero2__side">
+<p class="lead"><span class="nw">รับสร้าง</span> <span class="nw">ต่อเติม</span> <span class="nw">และปรับปรุงโรงงาน</span> <span class="nw">คลังสินค้า</span> <span class="nw">และอาคารสำนักงาน</span> <span class="nw">ครบทั้งงานโครงสร้าง</span> <span class="nw">โครงหลังคาเหล็ก</span> <span class="nw">งานสถาปัตยกรรม</span> <span class="nw">ระบบสุขาภิบาล</span> <span class="nw">และระบบไฟฟ้า</span> <span class="nw">ในสัญญาเดียว</span> <span class="nw">มีผู้รับผิดชอบคนเดียว</span> <span class="nw">ตั้งแต่เสาเข็มต้นแรก</span> <span class="nw">จนส่งมอบ</span> <span class="nw">ดำเนินงานมาตั้งแต่ปี</span> 2554</p>
+<div class="hero2__btns">
+<a class="btn btn--red btn--lg" href="#contact">ขอใบเสนอราคา</a>
+<a class="btn btn--line btn--lg" href="https://line.me/ti/p/NKvT3lnW9f" rel="noopener">แชตทาง LINE</a>
+</div>
+</div>
+</div>
+<figure class="wrap sect">
+<div class="sect__dwg" id="sect">
+<svg viewBox="0 0 1200 620" role="img" aria-labelledby="dwg-t dwg-d">
+<title id="dwg-t">รูปตัดอาคาร แสดงงานโครงสร้าง สถาปัตยกรรม สุขาภิบาล และไฟฟ้า</title>
+<desc id="dwg-d">อาคารสำนักงานสองชั้นติดกับคลังสินค้าโครงหลังคาเหล็ก ตั้งแต่เสาเข็มและฐานรากจนถึงท่อและระบบไฟฟ้า</desc>
+<defs><pattern id="earth" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#b3b9bf" stroke-width="1"/></pattern>
+<marker id="tk" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="9" markerHeight="9" orient="auto"><line x1="1" y1="9" x2="9" y2="1" stroke="#000" stroke-width="1.4"/></marker></defs>
+<g class="g-grid"><line x1="150" y1="40" x2="150" y2="575"/><line x1="330" y1="40" x2="330" y2="575"/><line x1="510" y1="40" x2="510" y2="575"/><line x1="1050" y1="40" x2="1050" y2="575"/></g>
+<g class="g-bub"><circle cx="150" cy="22" r="15"/><text x="150" y="27">A</text><circle cx="330" cy="22" r="15"/><text x="330" y="27">B</text><circle cx="510" cy="22" r="15"/><text x="510" y="27">C</text><circle cx="1050" cy="22" r="15"/><text x="1050" y="27">D</text></g>
+<rect x="0" y="420" width="1200" height="150" fill="url(#earth)" opacity=".55"/>
+<line class="g-ground" x1="0" y1="420" x2="1200" y2="420"/>
+<g class="L L-str L-fnd" data-layer="str">
+<rect class="fill" x="118" y="440" width="64" height="26"/>
+<rect class="pile" x="130" y="466" width="8" height="96"/>
+<rect class="pile" x="162" y="466" width="8" height="96"/>
+<rect class="fill" x="298" y="440" width="64" height="26"/>
+<rect class="pile" x="310" y="466" width="8" height="96"/>
+<rect class="pile" x="342" y="466" width="8" height="96"/>
+<rect class="fill" x="478" y="440" width="64" height="26"/>
+<rect class="pile" x="490" y="466" width="8" height="96"/>
+<rect class="pile" x="522" y="466" width="8" height="96"/>
+<rect class="fill" x="1018" y="440" width="64" height="26"/>
+<rect class="pile" x="1030" y="466" width="8" height="96"/>
+<rect class="pile" x="1062" y="466" width="8" height="96"/>
+<rect class="fill" x="150" y="420" width="360" height="14"/>
+<rect class="fill" x="510" y="420" width="540" height="14"/>
+</g>
+<g class="L L-str L-frame" data-layer="str">
+<rect class="fill" x="136" y="412" width="928" height="8"/>
+<path d="M144.0 412 V172 M156.0 412 V172"/>
+<path d="M324.0 412 V172 M336.0 412 V172"/>
+<path d="M504.0 412 V172 M516.0 412 V172"/>
+<rect class="fill" x="140" y="292" width="380" height="10"/>
+<rect class="fill" x="140" y="172" width="380" height="10"/>
+<rect class="fill" x="142" y="302" width="16" height="14"/><rect class="fill" x="142" y="182" width="16" height="14"/>
+<rect class="fill" x="322" y="302" width="16" height="14"/><rect class="fill" x="322" y="182" width="16" height="14"/>
+<rect class="fill" x="502" y="302" width="16" height="14"/><rect class="fill" x="502" y="182" width="16" height="14"/>
+<path d="M140 172 V158 M520 172 V158"/>
+<path d="M1046 412 V200 M1054 412 V200"/>
+</g>
+<g class="L L-roof" data-layer="roof">
+<path d="M510 200 L780 140 L1050 200"/>
+<path d="M510 222 H1050"/>
+<path class="thin" d="M510.0 222.0 L543.8 192.5 L577.5 222.0 L611.2 177.5 L645.0 222.0 L678.8 162.5 L712.5 222.0 L746.2 147.5 L780.0 222.0 L813.8 147.5 L847.5 222.0 L881.2 162.5 L915.0 222.0 L948.8 177.5 L982.5 222.0 L1016.2 192.5 L1050.0 222.0"/>
+<path class="sheet" d="M510 194 L780 133 L1066 196"/>
+<path d="M1056 196 h16 v8 h-16"/>
+<rect class="pur" x="540.8" y="182.5" width="6" height="6"/>
+<rect class="pur" x="810.8" y="137.5" width="6" height="6"/>
+<rect class="pur" x="574.5" y="175.0" width="6" height="6"/>
+<rect class="pur" x="844.5" y="145.0" width="6" height="6"/>
+<rect class="pur" x="608.2" y="167.5" width="6" height="6"/>
+<rect class="pur" x="878.2" y="152.5" width="6" height="6"/>
+<rect class="pur" x="642.0" y="160.0" width="6" height="6"/>
+<rect class="pur" x="912.0" y="160.0" width="6" height="6"/>
+<rect class="pur" x="675.8" y="152.5" width="6" height="6"/>
+<rect class="pur" x="945.8" y="167.5" width="6" height="6"/>
+<rect class="pur" x="709.5" y="145.0" width="6" height="6"/>
+<rect class="pur" x="979.5" y="175.0" width="6" height="6"/>
+<rect class="pur" x="743.2" y="137.5" width="6" height="6"/>
+<rect class="pur" x="1013.2" y="182.5" width="6" height="6"/>
+</g>
+<g class="L L-arc" data-layer="arc">
+<path d="M510 194 H510"/>
+<path class="dash" d="M156 314 H504 M156 196 H504"/>
+<path d="M1060 412 V204"/>
+<path d="M518 412 V342 H518"/>
+<path d="M206 412 V340 H244 V412"/>
+<path d="M380 412 L380 402 L392 402 L392 392 L404 392 L404 382 L416 382 L416 372 L428 372 L428 362 L440 362 L440 352 L452 352 L452 342 L464 342 L464 332 L476 332 L476 322 L488 322 L488 312 L500 312 L500 302"/>
+</g>
+<g class="L L-san" data-layer="san">
+<path class="fixt" d="M176 292 v-16 h22 v6 h-8 v10 M248 270 h26 v6 h-26z M261 276 v16"/>
+<path d="M218 292 V452 L64 464"/>
+<rect class="fillw" x="20" y="450" width="88" height="62"/><path d="M20 468 H108"/>
+<path d="M1068 200 V410 L1068 436 H1140"/><rect class="fillw" x="1140" y="426" width="28" height="30"/>
+<path class="dash" d="M300 302 V442 M300 442 H480"/>
+</g>
+<g class="L L-ele" data-layer="ele">
+<rect class="fillw" x="532" y="330" width="26" height="70"/><path d="M532 345 h26 M545 345 v40"/>
+<path d="M545 330 V232 H1030 M545 232 V232"/>
+<path d="M640 232 V252 M629 262 L634 252 H646 L651 262 Z"/>
+<path d="M760 232 V252 M749 262 L754 252 H766 L771 262 Z"/>
+<path d="M880 232 V252 M869 262 L874 252 H886 L891 262 Z"/>
+<path d="M1000 232 V252 M989 262 L994 252 H1006 L1011 262 Z"/>
+<path d="M540 330 V318 H170 M492 318 V198 H170"/>
+<rect class="lamp" x="178" y="314" width="24" height="5"/><rect class="lamp" x="178" y="196" width="24" height="5"/>
+<rect class="lamp" x="248" y="314" width="24" height="5"/><rect class="lamp" x="248" y="196" width="24" height="5"/>
+<rect class="lamp" x="358" y="314" width="24" height="5"/><rect class="lamp" x="358" y="196" width="24" height="5"/>
+<rect class="lamp" x="428" y="314" width="24" height="5"/><rect class="lamp" x="428" y="196" width="24" height="5"/>
+</g>
+<g class="labs">
+<g class="lab" data-layer="str"><path d="M166 512 L190 564"/><text x="194" y="560" text-anchor="start">เสาเข็ม</text></g>
+<g class="lab" data-layer="str"><path d="M362 452 L370 534"/><text x="374" y="530" text-anchor="start">ฐานราก</text></g>
+<g class="lab" data-layer="roof"><path d="M700 170 L600 100"/><text x="604" y="96" text-anchor="start">โครงหลังคาเหล็ก</text></g>
+<g class="lab" data-layer="roof"><path d="M930 160 L960 100"/><text x="964" y="96" text-anchor="start">หลังคาเมทัลชีทและฉนวน</text></g>
+<g class="lab" data-layer="str"><path d="M520 297 L600 304"/><text x="604" y="300" text-anchor="start">พื้น ค.ส.ล. ชั้น 2</text></g>
+<g class="lab" data-layer="arc"><path d="M440 350 L400 254"/><text x="404" y="250" text-anchor="start">บันได</text></g>
+<g class="lab" data-layer="san"><path d="M34 512 L8 570"/><text x="12" y="566" text-anchor="start">ถังบำบัดน้ำเสีย</text></g>
+<g class="lab" data-layer="san"><path d="M218 380 L130 354"/><text x="126" y="350" text-anchor="end">ท่อน้ำทิ้ง</text></g>
+<g class="lab" data-layer="san"><path d="M1068 300 L1180 266"/><text x="1176" y="262" text-anchor="end">ท่อระบายน้ำฝน</text></g>
+<g class="lab" data-layer="ele"><path d="M558 360 L600 384"/><text x="604" y="380" text-anchor="start">ตู้ MDB</text></g>
+<g class="lab" data-layer="ele"><path d="M880 258 L900 304"/><text x="904" y="300" text-anchor="start">โคมไฮเบย์</text></g>
+</g>
+<g class="lv">
+<path d="M52 412 H128"/><path class="tri" d="M118 412 l-6 -8 h12z"/><text x="54" y="406">±0.00</text>
+<path d="M52 292 H128"/><path class="tri" d="M118 292 l-6 -8 h12z"/><text x="54" y="286">+4.00</text>
+<path d="M52 172 H128"/><path class="tri" d="M118 172 l-6 -8 h12z"/><text x="54" y="166">+8.00</text>
+</g>
+<g class="dm">
+<line x1="150" y1="600" x2="330" y2="600" marker-start="url(#tk)" marker-end="url(#tk)"/><text x="240.0" y="592">6.00</text>
+<line x1="330" y1="600" x2="510" y2="600" marker-start="url(#tk)" marker-end="url(#tk)"/><text x="420.0" y="592">6.00</text>
+<line x1="510" y1="600" x2="1050" y2="600" marker-start="url(#tk)" marker-end="url(#tk)"/><text x="780.0" y="592">18.00</text>
+</g></svg>
     </div>
-
-    <section id="careers" class="section bg-light">
-        <div class="section-title reveal">
-            <h2>ร่วมงานกับเรา</h2>
-            <div class="divider"></div>
-            <p style="color: var(--text-light);">กรอกข้อมูลเพื่อส่งใบสมัครตรงถึง HR</p>
-        </div>
-        <div class="careers-container reveal">
-            <form id="careerForm" class="custom-form" action="https://formsubmit.co/suwisit.ncv@gmail.com" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="_subject" value="ใบสมัครงานใหม่จากเว็บไซต์ N&CV!">
-                <input type="hidden" name="_captcha" value="false">
-                
-                <div class="form-group">
-                    <label>ชื่อ - นามสกุล *</label>
-                    <input type="text" class="form-control" name="ชื่อ-นามสกุล" required>
-                </div>
-                <div class="form-group">
-                    <label>เบอร์โทรศัพท์ติดต่อ *</label>
-                    <input type="tel" class="form-control" name="เบอร์โทรศัพท์" required>
-                </div>
-                <div class="form-group">
-                    <label>ตำแหน่งที่สนใจ *</label>
-                    <select class="form-control" name="ตำแหน่ง" required>
-                        <option value="" disabled selected>-- โปรดระบุตำแหน่ง --</option>
-                        <option value="วิศวกรควบคุมงาน">วิศวกรควบคุมงาน (Site Engineer)</option>
-                        <option value="สถาปนิก">สถาปนิก (Architect)</option>
-                        <option value="โฟร์แมน">โฟร์แมน (Foreman)</option>
-                        <option value="ช่างเทคนิค/ไฟฟ้า">ช่างเทคนิค / ช่างไฟฟ้า</option>
-                        <option value="จป.วิชาชีพ">เจ้าหน้าที่ความปลอดภัย (จป.)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>แนบไฟล์ Resume / Portfolio (PDF หรือรูปภาพ)</label>
-                    <input type="file" class="form-control" name="ไฟล์แนบ" accept=".pdf,.png,.jpg,.jpeg">
-                </div>
-                <button type="submit" class="btn-submit" id="submitBtn"><i class="fas fa-paper-plane"></i> ยื่นใบสมัครงาน</button>
-            </form>
-        </div>
-    </section>
-
-    <div class="fab-container">
-        <div class="fab-wrapper">
-            <span class="fab-tooltip">โทร: 089-023-1676</span>
-            <a href="tel:0890231676" class="fab-btn fab-phone">
-                <i class="fas fa-phone-alt"></i>
-            </a>
-        </div>
-        <div class="fab-wrapper">
-            <span class="fab-tooltip">ติดต่อผ่าน LINE</span>
-            <a href="https://line.me/ti/p/NKvT3lnW9f" target="_blank" class="fab-btn fab-line">
-                <i class="fab fa-line"></i>
-            </a>
-        </div>
-    </div>
-
-    <footer>
-        <p>© 2026 N & CV-ENGINEERING CO.,LTD. All rights reserved. | 69/113 ถ.หทัยราษฎร์ แขวงมีนบุรี เขตมีนบุรี กทม.</p>
-    </footer>
-
-    <script>
-        // 1. Reveal Animation
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 50) { reveals[i].classList.add("active"); }
-            }
-        }
-        window.addEventListener("scroll", reveal); reveal();
-
-        // Navbar Shadow
-        window.addEventListener('scroll', function() {
-            var navbar = document.getElementById('navbar');
-            if(window.scrollY > 50) {
-                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
-            } else {
-                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
-            }
-        });
-
-        // 2. Lightbox
-        var modal = document.getElementById("lightboxModal");
-        var modalImg = document.getElementById("lightboxImg");
-        var captionText = document.getElementById("caption");
-
-        function openLightbox(element) {
-            var img = element.querySelector("img");
-            modal.style.display = "block";
-            modalImg.src = img.src;
-            captionText.innerHTML = img.alt;
-            document.body.style.overflow = "hidden";
-        }
-        function closeLightbox() {
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
-        }
-        modal.onclick = function(event) {
-            if (event.target == modal) { closeLightbox(); }
-        }
-
-        // 3. ป้องกันหน้าเว็บเด้ง (AJAX Form Submit)
-        const form = document.getElementById('careerForm');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            
-            const btn = document.getElementById('submitBtn');
-            const originalText = btn.innerHTML;
-            
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> กำลังส่งข้อมูล...';
-            btn.disabled = true;
-
-            fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' } 
-            })
-            .then(response => {
-                if(response.ok) {
-                    alert("ส่งใบสมัครเรียบร้อยแล้ว ขอบคุณที่สนใจร่วมงานกับเรา!");
-                    form.reset(); 
-                } else {
-                    alert("⚠️ คำเตือน: กรุณาเข้าไปกดปุ่ม 'Activate Form' ในอีเมล suwisit.ncv@gmail.com ก่อนการใช้งานครั้งแรกครับ");
-                }
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            })
-            .catch(error => {
-                alert("เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง");
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            });
-        });
-    </script>
+<figcaption class="sect__bar">
+<div aria-label="เลือกดูทีละระบบ" class="layers" role="group">
+<span class="layers__k">ดูทีละระบบ</span>
+<button aria-pressed="true" class="ly" data-layer="all" type="button">ทั้งหมด</button>
+<button aria-pressed="false" class="ly" data-layer="str" type="button"><i class="sw sw--str"></i>โครงสร้าง</button>
+<button aria-pressed="false" class="ly" data-layer="roof" type="button"><i class="sw sw--roof"></i>โครงหลังคา</button>
+<button aria-pressed="false" class="ly" data-layer="arc" type="button"><i class="sw sw--arc"></i>สถาปัตยกรรม</button>
+<button aria-pressed="false" class="ly" data-layer="san" type="button"><i class="sw sw--san"></i>สุขาภิบาล</button>
+<button aria-pressed="false" class="ly" data-layer="ele" type="button"><i class="sw sw--ele"></i>ไฟฟ้า</button>
+</div>
+<p class="sect__cap"><span class="nw">รูปตัดอาคารสำนักงาน</span> <span class="nw">ติดคลังสินค้า</span> <span class="nw">แสดงงาน</span> 5 <span class="nw">หมวด</span> <span class="nw">(ภาพประกอบ)</span></p>
+</figcaption>
+</figure>
+</section>
+<!-- CLIENTS -->
+<section aria-labelledby="clients-t" class="clients">
+<div class="wrap clients__in">
+<h2 class="h-small" id="clients-t">ลูกค้าที่เราทำงานให้</h2>
+<ul class="clients__list">
+<li><img alt="DKSH" height="96" loading="lazy" src="assets/img/clients/dksh.webp" width="310"/></li>
+<li><img alt="CP ALL" height="96" loading="lazy" src="assets/img/clients/cpall.webp" width="147"/></li>
+<li><img alt="WHA" height="96" loading="lazy" src="assets/img/clients/wha.webp" width="171"/></li>
+<li><img alt="Honda" height="96" loading="lazy" src="assets/img/clients/honda.webp" width="151"/></li>
+<li><img alt="Shiseido" height="60" loading="lazy" src="assets/img/clients/shiseido.webp" width="360"/></li>
+<li><img alt="KCE" height="96" loading="lazy" src="assets/img/clients/kce.webp" width="132"/></li>
+<li><img alt="LF Logistics" height="58" loading="lazy" src="assets/img/clients/lf.webp" width="360"/></li>
+</ul>
+</div>
+</section>
+<!-- SYSTEMS -->
+<section aria-labelledby="systems-t" class="sec" id="systems">
+<div class="wrap">
+<div class="sec__head">
+<h2 id="systems-t">งานที่เรารับเหมา</h2>
+<p class="sec__note">5 <span class="nw">หมวดงานในสัญญาเดียว</span> <span class="nw">ออกแบบโครงสร้าง</span> <span class="nw">และเซ็นรายการคำนวณ</span> <span class="nw">โดยวิศวกรของบริษัท</span></p>
+</div>
+<div class="sys">
+<section aria-labelledby="s-str" class="sys__col" data-layer="str">
+<h3 id="s-str"><i class="sw sw--str"></i>งานโครงสร้าง</h3>
+<ul>
+<li><span class="nw">เสาเข็มและฐานราก</span></li>
+<li><span class="nw">เสา</span> <span class="nw">คาน</span> <span class="nw">พื้น</span> <span class="nw">ค.ส.ล.</span></li>
+<li>พื้นโรงงานและคลังสินค้า</li>
+<li><span class="nw">โครงสร้างเหล็ก</span> <span class="nw">ชั้นลอย</span> <span class="nw">กันสาด</span></li>
+<li><span class="nw">ต่อเติมอาคารเดิม</span></li>
+</ul>
+</section>
+<section aria-labelledby="s-roof" class="sys__col" data-layer="roof">
+<h3 id="s-roof"><i class="sw sw--roof"></i>งานโครงหลังคา</h3>
+<ul>
+<li><span class="nw">โครงหลังคาเหล็ก</span> <span class="nw">และโครงถัก</span></li>
+<li><span class="nw">แป</span> <span class="nw">ค้ำยัน</span> <span class="nw">และเหล็กยึดโครง</span></li>
+<li><span class="nw">หลังคาเมทัลชีท</span> <span class="nw">และฉนวนกันความร้อน</span></li>
+<li><span class="nw">รางน้ำ</span> <span class="nw">ครอบสัน</span> <span class="nw">และแผ่นปิดรอยต่อ</span></li>
+<li>ซ่อมและเปลี่ยนหลังคาเดิม</li>
+</ul>
+</section>
+<section aria-labelledby="s-arc" class="sys__col" data-layer="arc">
+<h3 id="s-arc"><i class="sw sw--arc"></i>งานสถาปัตยกรรม</h3>
+<ul>
+<li><span class="nw">ผนังก่ออิฐฉาบปูน</span> <span class="nw">ผนังเบา</span></li>
+<li><span class="nw">ผนังเมทัลชีท</span> <span class="nw">และผนังภายนอก</span></li>
+<li><span class="nw">ฝ้าเพดาน</span> <span class="nw">ประตู</span> <span class="nw">หน้าต่าง</span></li>
+<li><span class="nw">พื้นผิว</span> <span class="nw">กระเบื้อง</span> <span class="nw">และงานสี</span></li>
+<li><span class="nw">ปรับปรุงสำนักงาน</span> <span class="nw">ห้องประชุม</span></li>
+</ul>
+</section>
+<section aria-labelledby="s-san" class="sys__col" data-layer="san">
+<h3 id="s-san"><i class="sw sw--san"></i>ระบบสุขาภิบาล</h3>
+<ul>
+<li>ท่อน้ำดีและท่อน้ำทิ้ง</li>
+<li><span class="nw">ห้องน้ำและสุขภัณฑ์</span></li>
+<li><span class="nw">ถังบำบัดน้ำเสีย</span></li>
+<li><span class="nw">รางน้ำ</span> <span class="nw">และท่อระบายน้ำฝน</span></li>
+</ul>
+</section>
+<section aria-labelledby="s-ele" class="sys__col" data-layer="ele">
+<h3 id="s-ele"><i class="sw sw--ele"></i>ระบบไฟฟ้า</h3>
+<ul>
+<li><span class="nw">ตู้</span> MDB <span class="nw">และตู้ไฟย่อย</span></li>
+<li>เดินสายและท่อร้อยสายไฟ</li>
+<li><span class="nw">ระบบแสงสว่าง</span> <span class="nw">โรงงานและสำนักงาน</span></li>
+<li><span class="nw">เต้ารับ</span> <span class="nw">และวงจรเครื่องจักร</span></li>
+</ul>
+</section>
+</div>
+</div>
+</section>
+<!-- ONE CONTRACTOR -->
+<section aria-labelledby="one-t" class="one">
+<div class="wrap one__in">
+<h2 id="one-t"><span class="nw">สัญญาเดียว</span> <span class="nw">ผู้รับผิดชอบคนเดียว</span></h2>
+<dl class="one__list">
+<div><dt><span class="nw">ตารางงานเดียว</span></dt><dd><span class="nw">งานโครงสร้าง</span> <span class="nw">หลังคา</span> <span class="nw">และงานระบบ</span> วางลำดับร่วมกันตั้งแต่ต้น <span class="nw">ไม่ต้องรอกัน</span> <span class="nw">ข้ามผู้รับเหมา</span></dd></div>
+<div><dt><span class="nw">เดินท่อก่อนเทพื้น</span></dt><dd>ท่อน้ำทิ้งและท่อร้อยสาย ฝังไว้ตั้งแต่ขั้นโครงสร้าง ไม่ต้องสกัดพื้นภายหลัง</dd></div>
+<div><dt><span class="nw">ใบเสนอราคาที่ตรวจได้</span></dt><dd><span class="nw">ถอดปริมาณจากแบบ</span> <span class="nw">ทุกหมวดงาน</span> <span class="nw">แยกค่าวัสดุกับค่าแรง</span> <span class="nw">ทุกรายการ</span></dd></div>
+</dl>
+</div>
+</section>
+<!-- PROJECTS -->
+<section aria-labelledby="projects-t" class="sec sec--grey" id="projects">
+<div class="wrap">
+<div class="sec__head">
+<h2 id="projects-t">ผลงานที่ผ่านมา</h2>
+</div>
+<div class="pj">
+<article class="pj__item pj__item--big">
+<div aria-label="พื้นที่สำหรับรูปหน้างาน" class="ph" role="img"><span>รูปหน้างาน</span></div>
+<div class="pj__meta">
+<p class="pj__type">คลังสินค้า</p>
+<h3>คลังกระจายสินค้า</h3>
+<p class="pj__client">CP ALL / WHA Logistics</p>
+</div>
+</article>
+<article class="pj__item">
+<div aria-label="พื้นที่สำหรับรูปหน้างาน" class="ph" role="img"><span>รูปหน้างาน</span></div>
+<div class="pj__meta">
+<p class="pj__type">สำนักงาน</p>
+<h3>ปรับปรุงสำนักงาน</h3>
+<p class="pj__client"><span class="nw">อาคาร</span> CP Tower / SJ INFINITE</p>
+</div>
+</article>
+<article class="pj__item">
+<div aria-label="พื้นที่สำหรับรูปหน้างาน" class="ph" role="img"><span>รูปหน้างาน</span></div>
+<div class="pj__meta">
+<p class="pj__type">ระบบไฟฟ้า</p>
+<h3>ติดตั้งตู้ควบคุมไฟฟ้า MDB</h3>
+<p class="pj__client"><span class="nw">โรงงาน</span> KCE</p>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- PROCESS -->
+<section aria-labelledby="process-t" class="sec">
+<div class="wrap">
+<div class="sec__head">
+<h2 id="process-t">ตั้งแต่โทรหาจนส่งมอบ</h2>
+</div>
+<ol class="steps">
+<li><span class="gb gb--s">1</span><h3><span class="nw">สำรวจหน้างาน</span></h3><p>วิศวกรไปดูพื้นที่จริง <span class="nw">วัดระยะ</span> <span class="nw">ถ่ายรูป</span> <span class="nw">และคุยขอบเขตงาน</span> <span class="nw">กับผู้ดูแลอาคาร</span></p></li>
+<li><span class="gb gb--s">2</span><h3><span class="nw">ออกแบบและคำนวณ</span></h3><p><span class="nw">ทำแบบและโมเดล</span> <span class="nw">3 มิติ</span> <span class="nw">ให้เห็นก่อนสร้าง</span> พร้อมรายการคำนวณโครงสร้าง <span class="nw">และประสานแบบงานระบบ</span></p></li>
+<li><span class="gb gb--s">3</span><h3><span class="nw">ใบเสนอราคา</span></h3><p><span class="nw">ถอดปริมาณจากแบบ</span> <span class="nw">ทุกหมวดงาน</span> <span class="nw">แยกค่าวัสดุกับค่าแรง</span> <span class="nw">ฝ่ายจัดซื้อ</span> <span class="nw">เทียบราคาได้ง่าย</span></p></li>
+<li><span class="gb gb--s">4</span><h3><span class="nw">ก่อสร้าง</span></h3><p><span class="nw">สร้างตามลำดับ</span> <span class="nw">ฐานราก</span> <span class="nw">โครงสร้าง</span> <span class="nw">หลังคา</span> <span class="nw">งานระบบ</span> <span class="nw">และงานสถาปัตย์</span> <span class="nw">มี จป.วิชาชีพ</span> <span class="nw">ตรวจหน้างานทุกวัน</span></p></li>
+<li><span class="gb gb--s">5</span><h3><span class="nw">ส่งมอบ</span></h3><p><span class="nw">ทดสอบระบบ</span> <span class="nw">ตรวจรับงานร่วมกัน</span> <span class="nw">และรับประกัน</span> งานโครงสร้างกับระบบไฟฟ้า <span class="nw">1 ปี</span></p></li>
+</ol>
+</div>
+</section>
+<!-- ABOUT -->
+<section aria-labelledby="about-t" class="sec sec--grey" id="about">
+<div class="wrap about">
+<div class="about__text">
+<h2 id="about-t">เกี่ยวกับเรา</h2>
+<p><span class="nw">บริษัท</span> <span class="nw">เอ็น</span> <span class="nw">แอนด์</span> <span class="nw">ซีวี-เอ็นจิเนียริ่ง</span> <span class="nw">จำกัด</span> <span class="nw">ก่อตั้งเมื่อปี</span> <span class="nw">พ.ศ. 2554</span> <span class="nw">ที่มีนบุรี</span> เป็นบริษัทรับเหมาก่อสร้าง <span class="nw">โรงงาน</span> <span class="nw">คลังสินค้า</span> <span class="nw">และอาคารสำนักงาน</span> <span class="nw">ของบริษัทเอกชน</span> <span class="nw">รับทั้งงานสร้างใหม่</span> <span class="nw">ต่อเติม</span> <span class="nw">และปรับปรุง</span> <span class="nw">ครอบคลุมงานโครงสร้าง</span> <span class="nw">โครงหลังคา</span> <span class="nw">สถาปัตยกรรม</span> <span class="nw">สุขาภิบาล</span> <span class="nw">และไฟฟ้า</span></p>
+<p>เราตัดสินใจจากข้อมูลหน้างานจริง ทุกงานเริ่มจากการไปวัดพื้นที่ <span class="nw">ทำแบบ</span> แล้วคิดราคาจากปริมาณที่ถอดได้ <span class="nw">ไม่ใช่ตีราคาเหมา</span> <span class="nw">จากการกะด้วยตา</span></p>
+</div>
+<dl class="facts">
+<div><dt>ก่อตั้ง</dt><dd><span class="nw">พ.ศ. 2554</span></dd></div>
+<div><dt>ทุนจดทะเบียน</dt><dd><span class="nw">5,000,000 บาท</span></dd></div>
+<div><dt>บุคลากร</dt><dd><span class="nw">วิศวกร</span> <span class="nw">ฝ่ายก่อสร้าง</span> <span class="nw">และช่างเทคนิค</span> <span class="nw">20 คนขึ้นไป</span></dd></div>
+<div><dt>ระบบบริหารงาน</dt><dd><span class="nw">ตามมาตรฐาน</span> ISO</dd></div>
+<div><dt>ความปลอดภัย</dt><dd><span class="nw">จป.วิชาชีพ</span> <span class="nw">ควบคุมหน้างานทุกวัน</span></dd></div>
+<div><dt>รับประกัน</dt><dd>งานโครงสร้างและระบบไฟฟ้า <span class="nw">1 ปี</span></dd></div>
+</dl>
+</div>
+</section>
+<!-- CONTACT -->
+<section aria-labelledby="contact-t" class="sec sec--black" id="contact">
+<div class="wrap contact">
+<div class="contact__info">
+<h2 id="contact-t">ขอใบเสนอราคา</h2>
+<p>บอกประเภทงานกับสถานที่มาก่อน <span class="nw">เราจะโทรกลับ</span> <span class="nw">เพื่อนัดสำรวจหน้างาน</span> <span class="nw">ถ้ามีรูปหรือแบบเดิม</span> <span class="nw">ส่งทาง</span> LINE <span class="nw">ได้เลย</span></p>
+<ul class="cinfo">
+<li><span>โทร</span><a href="tel:0890231676">089-023-1676</a></li>
+<li><span>LINE</span><a href="https://line.me/ti/p/NKvT3lnW9f" rel="noopener">แชตกับเราทาง LINE</a></li>
+<li><span>สำนักงาน</span><address>69/113 <span class="nw">ถ.หทัยราษฎร์</span> <span class="nw">แขวงมีนบุรี</span><br/><span class="nw">เขตมีนบุรี</span> <span class="nw">กรุงเทพฯ</span></address></li>
+</ul>
+<a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=69%2F113+%E0%B8%96.%E0%B8%AB%E0%B8%97%E0%B8%B1%E0%B8%A2%E0%B8%A3%E0%B8%B2%E0%B8%A9%E0%B8%8E%E0%B8%A3%E0%B9%8C+%E0%B8%A1%E0%B8%B5%E0%B8%99%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5" rel="noopener">เปิดแผนที่ใน Google Maps</a>
+</div>
+<form class="form" data-form="" data-ok="ส่งคำขอแล้ว เราจะโทรกลับเพื่อนัดสำรวจหน้างาน" data-subject="ขอใบเสนอราคาจากเว็บไซต์" id="quote" novalidate="">
+<input aria-hidden="true" class="hp" name="botcheck" tabindex="-1" type="checkbox"/>
+<div class="f2">
+<label>ชื่อผู้ติดต่อ<input autocomplete="name" data-label="ชื่อผู้ติดต่อ" name="ชื่อผู้ติดต่อ" required=""/></label>
+<label>บริษัท / โรงงาน<input autocomplete="organization" name="บริษัท"/></label>
+</div>
+<div class="f2">
+<label>เบอร์โทร<input autocomplete="tel" data-label="เบอร์โทร" inputmode="tel" name="เบอร์โทร" required="" type="tel"/></label>
+<label>ลักษณะงาน
+          <select data-label="ลักษณะงาน" name="ลักษณะงาน" required="">
+<option value="">เลือกลักษณะงาน</option>
+<option>สร้างอาคารใหม่</option>
+<option>ต่อเติมอาคาร</option>
+<option>ปรับปรุงอาคาร / สำนักงาน</option>
+<option>งานโครงสร้าง / พื้น</option>
+<option>งานโครงหลังคา / หลังคา</option>
+<option>ระบบสุขาภิบาล</option>
+<option>ระบบไฟฟ้า</option>
+<option>อื่น ๆ</option>
+</select>
+</label>
+</div>
+<label>สถานที่ (เขต / จังหวัด / นิคม)<input name="สถานที่"/></label>
+<label>รายละเอียดงาน<textarea name="รายละเอียดงาน" placeholder="เช่น สร้างอาคารสำนักงาน 2 ชั้นติดคลังสินค้า พื้นที่ประมาณ 300 ตร.ม." rows="4"></textarea></label>
+<p class="pdpa">ข้อมูลนี้ใช้เพื่อติดต่อกลับ <span class="nw">เรื่องใบเสนอราคาเท่านั้น</span> <a href="privacy.html">นโยบายความเป็นส่วนตัว</a></p>
+<button class="btn btn--red btn--lg" type="submit">ส่งคำขอใบเสนอราคา</button>
+<p aria-live="polite" class="form__msg" role="status"></p>
+</form>
+</div>
+</section>
+<!-- CAREERS -->
+<section aria-labelledby="careers-t" class="sec careers" id="careers">
+<div class="wrap careers__in">
+<div>
+<h2 id="careers-t">ร่วมงานกับเรา</h2>
+<p><span class="nw">เปิดรับวิศวกรควบคุมงาน</span> <span class="nw">สถาปนิก</span> <span class="nw">โฟร์แมน</span> <span class="nw">ช่างเทคนิค</span> <span class="nw">ช่างไฟฟ้า</span> และเจ้าหน้าที่ความปลอดภัย <span class="nw">(จป.)</span></p>
+</div>
+<a class="btn btn--ghost btn--lg" href="careers.html">ดูตำแหน่งและสมัครงาน</a>
+</div>
+</section>
+</main>
+<footer aria-label="ข้อมูลบริษัท" class="tb">
+<div class="tb__in">
+<div class="tb__cell tb__logo"><img alt="" height="187" loading="lazy" src="assets/img/logo.webp" width="440"/></div>
+<div class="tb__cell tb__name">
+<span class="tb__k"><span class="nw">บริษัท</span></span>
+<strong><span class="nw">บริษัท</span> <span class="nw">เอ็น</span> <span class="nw">แอนด์</span> <span class="nw">ซีวี-เอ็นจิเนียริ่ง</span> <span class="nw">จำกัด</span></strong>
+<span lang="en">N&amp;CV Engineering Co., Ltd.</span>
+</div>
+<div class="tb__cell">
+<span class="tb__k"><span class="nw">สำนักงาน</span></span>
+      69/113 <span class="nw">ถ.หทัยราษฎร์</span> <span class="nw">แขวงมีนบุรี</span> <span class="nw">เขตมีนบุรี</span> <span class="nw">กรุงเทพฯ
+</span>    </div>
+<div class="tb__cell">
+<span class="tb__k"><span class="nw">ติดต่อ</span></span>
+<a href="tel:0890231676">089-023-1676</a><br/>
+<a href="https://line.me/ti/p/NKvT3lnW9f" rel="noopener">LINE</a>
+</div>
+<div class="tb__cell tb__rev">
+<span class="tb__k"><span class="nw">ปรับปรุงล่าสุด</span></span>
+      23 <span class="nw">พ.ย.</span> 2569
+      <span class="tb__copy">© 2569 N&amp;CV Engineering</span>
+</div>
+</div>
+</footer>
+<div aria-label="ติดต่อด่วน" class="mbar">
+<a href="tel:0890231676">โทร</a>
+<a href="https://line.me/ti/p/NKvT3lnW9f" rel="noopener">LINE</a>
+<a class="mbar__red" href="#contact">ขอใบเสนอราคา</a>
+</div>
+<script defer="" src="js/site.js"></script>
 </body>
 </html>
