@@ -575,3 +575,9 @@ h2{position:relative}
   .slide,.slide img,.svc__card,.pj--grid .pj__item,.logos li img,.safe__list li,.totop{transition:none}
 }
 .prj[hidden]{display:none}
+.marquee__track{gap:0}
+.marquee__group{display:flex;align-items:center;gap:64px;padding-right:64px;flex:none}
+.marquee__group img{height:40px;width:auto;max-width:none;flex:none}
+@media (max-width:900px){.marquee__group{gap:44px;padding-right:44px}.marquee__group img{height:32px}}
+@media (prefers-reduced-motion:reduce){.marquee__group+.marquee__group{display:none}.marquee__group{flex-wrap:wrap;justify-content:center;padding:0 20px;gap:24px 40px}}
+.mosaic a .slides__dots{left:auto;right:12px;bottom:14px;background:transparent;padding:0}
